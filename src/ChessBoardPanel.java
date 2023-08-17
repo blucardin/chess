@@ -95,25 +95,7 @@ public class ChessBoardPanel extends JPanel {
                 if (ChessGame.board.getPieces().get(x).get(y) == null){
                     ChessGame.board.clearHighlighted();
                     if (selectedPiece != null) {
-                        // if the move is valid, move the piece
-                        System.out.println("Moving piece");
-                        boolean validMove = false;
-                        for (int[] square : ChessGame.board.getPieces().get(selectedPiece[0]).get(selectedPiece[1]).getPossibleMoves(selectedPiece[0], selectedPiece[1])) {
-                            System.out.println(square[0] + ", " + square[1]);
-                            System.out.println(x + ", - " + y);
-                            if (square[0] == x && square[1] == y) {
-                                validMove = true;
-                            }
-                        }
-
-                        if (validMove) {
-                            System.out.println("Valid move");
-                            ChessGame.board.getPieces().get(x).set(y, ChessGame.board.getPieces().get(selectedPiece[0]).get(selectedPiece[1]));
-                            ChessGame.board.getPieces().get(selectedPiece[0]).set(selectedPiece[1], null);
-                            ChessGame.board.changeTurn();
-                            ChessGame.board.clearHighlighted();
-                            ChessGame.board.setSelectedPiece(null);
-                        }
+                        movePiece(selectedPiece, x, y);
                     }
                 }
                 else if (ChessGame.board.getPieces().get(x).get(y).isWhite() == ChessGame.board.isWhiteTurn()) {
@@ -125,12 +107,34 @@ public class ChessBoardPanel extends JPanel {
 
                     ChessGame.board.setSelectedPiece(new int[]{x, y});
                 }
+                else if (selectedPiece != null) {
+                    movePiece(selectedPiece, x, y);
+                }
 
                 // redraw the board
                 repaint();
 
             }
         });
+    }
+
+    public static void movePiece(int[] selectedPiece, int x, int y){
+        boolean validMove = false;
+        for (int[] square : ChessGame.board.getPieces().get(selectedPiece[0]).get(selectedPiece[1]).getPossibleMoves(selectedPiece[0], selectedPiece[1])) {
+            System.out.println(square[0] + ", " + square[1]);
+            System.out.println(x + ", - " + y);
+            if (square[0] == x && square[1] == y) {
+                validMove = true;
+            }
+        }
+
+        if (validMove) {
+            ChessGame.board.getPieces().get(x).set(y, ChessGame.board.getPieces().get(selectedPiece[0]).get(selectedPiece[1]));
+            ChessGame.board.getPieces().get(selectedPiece[0]).set(selectedPiece[1], null);
+            ChessGame.board.changeTurn();
+            ChessGame.board.clearHighlighted();
+            ChessGame.board.setSelectedPiece(null);
+        }
     }
 
 }
