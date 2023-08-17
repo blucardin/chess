@@ -4,6 +4,9 @@ public class Board {
     private ArrayList<ArrayList<Piece>> pieces = new ArrayList<>();
     private ArrayList<int[]> highlighted = new ArrayList<>();
 
+    private boolean whiteTurn = true;
+    private int[] selectedPiece = null;
+
     private static final int width = 8, height = 8;
 
     public Board() {
@@ -15,6 +18,22 @@ public class Board {
             this.pieces.add(row);
         }
         clearHighlighted();
+    }
+
+    public boolean isWhiteTurn() {
+        return whiteTurn;
+    }
+
+    public void changeTurn() {
+        this.whiteTurn = !this.whiteTurn;
+    }
+
+    public int[] getSelectedPiece() {
+        return selectedPiece;
+    }
+
+    public void setSelectedPiece(int[] selectedPiece) {
+        this.selectedPiece = selectedPiece;
     }
 
     public void clearHighlighted() {
