@@ -2,14 +2,14 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 public class ChessGame {
+
+    static Board board = new Board();
+
     public static void main(String[] args) {
 
-        // create the pieces
-        Board.initializePieces();
-
         for (int i = 0; i < 8; i++) {
-            Board.addPiece(new Pawn(true), i, 1);
-            Board.addPiece(new Pawn(false), i, 6);
+            board.addPiece(new Pawn(false), i, 1);
+            board.addPiece(new Pawn(true), i, 6);
         }
 
         
