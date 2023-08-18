@@ -144,8 +144,13 @@ public class Board {
         return fileString;
     }
 
-    public void movePiece(int x, int y, int newX, int newY ) {
-        ChessGame.board.getPieces().get(newX).set(newY, ChessGame.board.getPieces().get(x).get(y));
-        ChessGame.board.getPieces().get(x).set(y, null);
+    public void movePiece(int x, int y, int newX, int newY) {
+        pieces.get(newX).set(newY, ChessGame.board.getPieces().get(x).get(y));
+        pieces.get(x).set(y, null);
+    }
+
+    public void movePiece(int x, int y, int newX, int newY, Piece fillPiece) {
+        pieces.get(newX).set(newY, ChessGame.board.getPieces().get(x).get(y));
+        pieces.get(x).set(y, fillPiece);
     }
 }

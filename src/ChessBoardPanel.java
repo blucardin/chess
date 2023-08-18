@@ -75,26 +75,25 @@ public class ChessBoardPanel extends JPanel {
                 int x = mouseX / (width / boardWidth);
                 int y = mouseY / (height / boardHeight);
 
-                // if selected piece's color matches our color, and the user clicked on a piece opposite our color, check if the move is valid, and if so, move the piece
                 int[] selectedPiece = ChessGame.board.getSelectedPiece();
                 
-                if (ChessGame.board.getPieces().get(x).get(y) == null){
-                    ChessGame.board.clearHighlighted();
-                    if (selectedPiece != null) {
-                        movePiece(selectedPiece, x, y);
+                if (ChessGame.board.getPieces().get(x).get(y) == null){ // if the square clicked is empty
+                    ChessGame.board.clearHighlighted(); // clear the highlighted squares, if the selected piece is not null, move it to the square clicked
+                    if (selectedPiece != null) { 
+                        tryToMovePiece(selectedPiece, x, y); 
                     }
-                }
-                else if (ChessGame.board.getPieces().get(x).get(y).isWhite() == ChessGame.board.isWhiteTurn()) {
+                } 
+                else if (ChessGame.board.getPieces().get(x).get(y).isWhite() == ChessGame.board.isWhiteTurn()) { // if the square clicked has a piece of the same color as the current turn
 
-                    ChessGame.board.clearHighlighted();
+                    ChessGame.board.clearHighlighted(); // clear the highlighted squares, highlight the possible moves of the piece clicked, set the selected piece to the piece clicked
                     ArrayList<int[]> highLighted = ChessGame.board.getPieces().get(x).get(y).getPossibleMoves(x, y);
                     highLighted.add(new int[]{x, y});
                     ChessGame.board.setHighlighted(highLighted);
 
                     ChessGame.board.setSelectedPiece(new int[]{x, y});
                 }
-                else if (selectedPiece != null) {
-                    movePiece(selectedPiece, x, y);
+                else if (selectedPiece != null) { // if the square clicked has a piece of the opposite color as the current turn
+                    tryToMovePiece(selectedPiece, x, y); // move the selected piece to the square clicked
                 }
 
                 // redraw the board
@@ -104,7 +103,7 @@ public class ChessBoardPanel extends JPanel {
         });
     }
 
-    public static void movePiece(int[] selectedPiece, int x, int y){
+    public static void tryToMovePiece(int[] selectedPiece, int x, int y){
         boolean validMove = false;
         for (int[] square : ChessGame.board.getPieces().get(selectedPiece[0]).get(selectedPiece[1]).getPossibleMoves(selectedPiece[0], selectedPiece[1])) {
             if (square[0] == x && square[1] == y) {

@@ -72,7 +72,7 @@ public class King extends Piece {
                     for (int[] possibleMoveOfOpponent : possibleMovesOfOpponent) {
                         if (possibleMoveOfOpponent[0] == newX && possibleMoveOfOpponent[1] == newY) {
                             System.out.println("Possible move of opponent: " + newX + ", " + newY);
-                            ChessGame.board.movePiece(newX, newY, x, y);
+                            ChessGame.board.movePiece(newX, newY, x, y, pastPiece);
                             return true;
                         }
                     }
@@ -81,7 +81,7 @@ public class King extends Piece {
         }
 
         // move the king back
-        ChessGame.board.movePiece(newX, newY, x, y);
+        ChessGame.board.movePiece(newX, newY, x, y, pastPiece);
         return false; 
     }
 
