@@ -51,8 +51,7 @@ public class King extends Piece {
         // move the king
         Piece pastPiece = ChessGame.board.getPieces().get(newX).get(newY);
 
-        ChessGame.board.getPieces().get(newX).set(newY, ChessGame.board.getPieces().get(x).get(y));
-        ChessGame.board.getPieces().get(x).set(y, null);
+        ChessGame.board.movePiece(x, y, newX, newY);
 
         // check if the king is in check
         for (int i = 0; i < Board.getHeight(); i++) {
@@ -73,8 +72,7 @@ public class King extends Piece {
                     for (int[] possibleMoveOfOpponent : possibleMovesOfOpponent) {
                         if (possibleMoveOfOpponent[0] == newX && possibleMoveOfOpponent[1] == newY) {
                             System.out.println("Possible move of opponent: " + newX + ", " + newY);
-                            ChessGame.board.getPieces().get(x).set(y, ChessGame.board.getPieces().get(newX).get(newY));
-                            ChessGame.board.getPieces().get(newX).set(newY, pastPiece);
+                            ChessGame.board.movePiece(newX, newY, x, y);
                             return true;
                         }
                     }
@@ -83,9 +81,7 @@ public class King extends Piece {
         }
 
         // move the king back
-        ChessGame.board.getPieces().get(x).set(y, ChessGame.board.getPieces().get(newX).get(newY));
-        ChessGame.board.getPieces().get(newX).set(newY, pastPiece);
-
+        ChessGame.board.movePiece(newX, newY, x, y);
         return false; 
     }
 

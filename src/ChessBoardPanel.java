@@ -113,8 +113,7 @@ public class ChessBoardPanel extends JPanel {
         }
 
         if (validMove) {
-            ChessGame.board.getPieces().get(x).set(y, ChessGame.board.getPieces().get(selectedPiece[0]).get(selectedPiece[1]));
-            ChessGame.board.getPieces().get(selectedPiece[0]).set(selectedPiece[1], null);
+            ChessGame.board.movePiece(selectedPiece[0], selectedPiece[1], x, y);
             ChessGame.board.changeTurn();
             ChessGame.board.clearHighlighted();
             ChessGame.board.setSelectedPiece(null);
