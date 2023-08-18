@@ -31,23 +31,11 @@ public class ChessBoardPanel extends JPanel {
             }
         }
 
-        // for (int i = 0; i < 8; i += 2) {
-        //     for (int j = 1; j < 9; j += 2) {
-        //         g.fillRect(i * width / 8, j * height / 8, width / 8, height / 8);
-        //     }
-        // }
-
         for (int i = 1; i < boardWidth; i+=2) {
             for (int j = 0; j < boardHeight; j+=2) {
                 g.fillRect(i * width / boardWidth, j * height / boardHeight, width / boardWidth, height / boardHeight);
             }
         }
-
-        // for (int i = 1; i < 9; i += 2) {
-        //     for (int j = 0; j < 8; j += 2) {
-        //         g.fillRect(i * width / 8, j * height / 8, width / 8, height / 8);
-        //     }
-        // }
 
         // display the highlighted squares
         g.setColor(new Color(255, 255, 0, 128));
@@ -121,8 +109,6 @@ public class ChessBoardPanel extends JPanel {
     public static void movePiece(int[] selectedPiece, int x, int y){
         boolean validMove = false;
         for (int[] square : ChessGame.board.getPieces().get(selectedPiece[0]).get(selectedPiece[1]).getPossibleMoves(selectedPiece[0], selectedPiece[1])) {
-            System.out.println(square[0] + ", " + square[1]);
-            System.out.println(x + ", - " + y);
             if (square[0] == x && square[1] == y) {
                 validMove = true;
             }

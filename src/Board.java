@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.Buffer;
 import java.util.ArrayList;
 
 public class Board {
@@ -6,6 +10,7 @@ public class Board {
 
     private boolean whiteTurn = true;
     private int[] selectedPiece = null;
+    private String nullString = "__";
 
     private static final int width = 8, height = 8;
 
@@ -17,7 +22,51 @@ public class Board {
             }
             this.pieces.add(row);
         }
-        clearHighlighted();
+    }
+
+    //constructor for loading a board from a file
+    public Board(String fileName) {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(fileName));
+            String line = null;
+            while ((line = br.readLine()) != null) {
+                String[] pieces = line.split(" ");
+                ArrayList<Piece> row = new ArrayList<>();
+                for (int j = 0; j < width; j++) {
+
+                    Piece piece = null;
+                    switch (pieces[j].charAt(1)) {
+                        case 'p':
+                            piece = new Pawn(pieces[j].charAt(0) == 'w');
+                            break;
+                        case 'r':
+                            piece = new Rook(pieces[j].charAt(0) == 'w');
+                            break;
+                        case 'n':
+                            piece = new Knight(pieces[j].charAt(0) == 'w');
+                            break;
+                        case 'b':
+                            piece = new Bishop(pieces[j].charAt(0) == 'w');
+                            break;
+                        case 'q':
+                            piece = new Queen(pieces[j].charAt(0) == 'w');
+                            break;
+                        case 'k':
+                            piece = new King(pieces[j].charAt(0) == 'w');
+                            break;
+                        default:
+                            System.out.println("Error: invalid piece string in " + fileName);
+                            break;
+                        }
+                        row.add(piece);
+                }
+                this.pieces.add(row);
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error: file not found");
+            e.printStackTrace();
+        }
     }
 
     public boolean isWhiteTurn() {
@@ -75,5 +124,26 @@ public class Board {
         Piece pastPiece = pieces.get(x).get(y);
         pieces.get(x).set(y, null);
         return pastPiece;
+    }
+
+    @Override
+    public String toString() {
+        return "Board [pieces=" + pieces + ", highlighted=" + highlighted + ", whiteTurn=" + whiteTurn
+                + ", selectedPiece=" + selectedPiece + "]";
+    }
+
+    public String toFileString() {
+        String fileString = "";
+        for (int i = 0; i < pieces.size(); i++) {
+            for (int j = 0; j < pieces.get(i).size(); j++) {
+                if (pieces.get(i).get(j) != null) {
+                    fileString += pieces.get(i).get(j).getFileString() + " ";
+                } else {
+                    fileString += "xx ";
+                }
+            }
+            fileString += "\n";
+        }
+        return fileString;
     }
 }

@@ -3,15 +3,9 @@ import javax.swing.SwingUtilities;
 
 public class ChessGame {
 
-    static Board board = new Board();
+    static Board board = new Board("defaultBoard.txt");
 
     public static void main(String[] args) {
-
-        for (int i = 0; i < 8; i++) {
-            board.addPiece(new Pawn(false), i, 1);
-            board.addPiece(new Pawn(true), i, 6);
-        }
-
         
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("Chess Game");

@@ -1,0 +1,8 @@
+br bp __ __ __ __ wp wr
+bn bp __ __ __ __ wp wn
+bb bp __ __ __ __ wp wb
+bq bp __ __ __ __ wp wq
+bk bp __ __ __ __ wp wk
+bb bp __ __ __ __ wp wb
+bn bp __ __ __ __ wp wn
+br bp __ __ __ __ wp wr

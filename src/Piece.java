@@ -12,17 +12,22 @@ abstract class Piece {
 
     // define a getImage function
     public Image getImage() {
-        String fileName = "";
-        if (this.isWhite){
-            fileName  =  "w" + filePrefix + ".png";
-        }
-        else{
-            fileName = "b" + filePrefix + ".png";
-        }
-        return new ImageIcon("images/" + fileName).getImage();
+
+        return new ImageIcon("images/" + getFileString() + ".png").getImage();
     } 
 
     public abstract String toString();
+
+    public String getFileString(){
+        String fileName = "";
+        if (this.isWhite){
+            fileName  =  "w" + filePrefix ;
+        }
+        else{
+            fileName = "b" + filePrefix;
+        }
+        return fileName;
+    }
 
     public boolean isWhite() {
         return isWhite;
