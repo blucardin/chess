@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.Buffer;
 import java.util.ArrayList;
 
 public class Board {
@@ -59,6 +58,7 @@ public class Board {
                 }
                 this.pieces.add(row);
             }
+            br.close();
 
         } catch (IOException e) {
             System.out.println("Error: file not found");

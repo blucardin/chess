@@ -38,10 +38,7 @@ public class Knight extends Piece {
         return possibleMoves;
     }
 
-    // Helper method to check if a position is valid on the chessboard
-    private boolean isValidPosition(int x, int y) {
-        return x >= 0 && x < 8 && y >= 0 && y < 8;
-    }
+
 
     @Override
     public String toString() {

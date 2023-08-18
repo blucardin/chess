@@ -32,5 +32,10 @@ abstract class Piece {
     public boolean isWhite() {
         return isWhite;
     }
+
+    // Helper method to check if a position is valid on the chessboard
+    public boolean isValidPosition(int x, int y) {
+        return x >= 0 && x < Board.getWidth() && y >= 0 && y < Board.getHeight();
+    }
     
 }

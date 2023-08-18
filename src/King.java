@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class King extends Piece {
@@ -110,10 +109,7 @@ public class King extends Piece {
     }
 
 
-    // Helper method to check if a position is valid on the chessboard
-    private boolean isValidPosition(int x, int y) {
-        return x >= 0 && x < 8 && y >= 0 && y < 8;
-    }
+
 
     @Override
     public String toString() {
