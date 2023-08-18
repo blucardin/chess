@@ -54,9 +54,6 @@ public class Board {
                         case 'k':
                             piece = new King(pieces[j].charAt(0) == 'w');
                             break;
-                        default:
-                            System.out.println("Error: invalid piece string in " + fileName);
-                            break;
                         }
                         row.add(piece);
                 }
@@ -139,7 +136,7 @@ public class Board {
                 if (pieces.get(i).get(j) != null) {
                     fileString += pieces.get(i).get(j).getFileString() + " ";
                 } else {
-                    fileString += "xx ";
+                    fileString += nullString + " ";
                 }
             }
             fileString += "\n";
