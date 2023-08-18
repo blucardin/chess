@@ -9,6 +9,9 @@ public class Board {
 
     private boolean whiteTurn = true;
     private int[] selectedPiece = null;
+
+    private String ending = "";
+
     private String nullString = "__";
 
     private static final int width = 8, height = 8;
@@ -66,6 +69,74 @@ public class Board {
         }
     }
 
+    public boolean checkForCheck(){
+        int kingX = -1;
+        int kingY = -1;
+
+        // find the king
+        for (int i = 0; i < Board.getHeight(); i++) {
+            for (int j = 0; j < Board.getWidth(); j++) {
+                if (pieces.get(i).get(j) instanceof King && pieces.get(i).get(j).isWhite() == whiteTurn) {
+                    kingX = i;
+                    kingY = j;
+                }
+            }
+        }
+
+        for (int i = 0; i < Board.getHeight(); i++) {
+            for (int j = 0; j < Board.getWidth(); j++) {
+                Piece piece = ChessGame.board.getPieces().get(i).get(j);
+
+                if (piece != null && piece.isWhite() != whiteTurn) {
+
+                    ArrayList<int[]> possibleMovesOfOpponent;  
+
+                    if (piece instanceof King) {
+                        possibleMovesOfOpponent = King.getKillMoves(i, j);
+                    }
+                    else {
+                        possibleMovesOfOpponent = piece.getPossibleMoves(i, j);
+                    }
+
+                    for (int[] possibleMoveOfOpponent : possibleMovesOfOpponent) {
+                        if (possibleMoveOfOpponent[0] == kingX && possibleMoveOfOpponent[1] == kingY) {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean willThisMoveCauseCheck(int x, int y, int newX, int newY) {
+        Piece pastPiece = removePiece(newX, newY);
+        movePiece(x, y, newX, newY);
+        boolean check = checkForCheck();
+        movePiece(newX, newY, x, y, pastPiece);
+        return check;
+    }
+
+    public boolean canAMoveBeMade(){
+        for (int i = 0; i < Board.getHeight(); i++) {
+            for (int j = 0; j < Board.getWidth(); j++) {
+                Piece piece = pieces.get(i).get(j);
+
+                if (piece != null && piece.isWhite() == whiteTurn) {
+
+                    ArrayList<int[]> possibleMoves = piece.getPossibleMoves(i, j);
+
+                    for (int[] possibleMove : possibleMoves) {
+                        if (!willThisMoveCauseCheck(i, j, possibleMove[0], possibleMove[1])) {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
     public boolean isWhiteTurn() {
         return whiteTurn;
     }
@@ -84,6 +155,14 @@ public class Board {
 
     public void clearHighlighted() {
         this.highlighted.clear();
+    }
+
+    public void setEnding(String ending) {
+        this.ending = ending;
+    }
+
+    public String getEnding() {
+        return ending;
     }
 
     public static int getWidth() {

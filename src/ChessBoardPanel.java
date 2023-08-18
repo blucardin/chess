@@ -50,6 +50,15 @@ public class ChessBoardPanel extends JPanel {
             }
         }
 
+        // display the ending message
+        if (!ChessGame.board.getEnding().equals("")) {
+            g.setColor(new Color(0, 0, 0, 128));
+            g.fillRect(0, 0, width, height);
+            g.setColor(new Color(255, 255, 255));
+            g.setFont(new Font("TimesRoman", Font.PLAIN, 50));
+            g.drawString(ChessGame.board.getEnding(), width / 2 - 100, height / 2);
+        }
+
     }
 
     // Override the getPreferredSize method to return the desired width and height
@@ -76,24 +85,35 @@ public class ChessBoardPanel extends JPanel {
                 int y = mouseY / (height / boardHeight);
 
                 int[] selectedPiece = ChessGame.board.getSelectedPiece();
-                
-                if (ChessGame.board.getPieces().get(x).get(y) == null){ // if the square clicked is empty
-                    ChessGame.board.clearHighlighted(); // clear the highlighted squares, if the selected piece is not null, move it to the square clicked
-                    if (selectedPiece != null) { 
-                        tryToMovePiece(selectedPiece, x, y); 
+
+                if (ChessGame.board.getEnding().equals("")){
+                    
+                    if (ChessGame.board.getPieces().get(x).get(y) == null){ // if the square clicked is empty
+                        if (selectedPiece != null) { 
+                            tryToMovePiece(selectedPiece, x, y); 
+                        }
+                        ChessGame.board.clearHighlighted(); // clear the highlighted squares, if the selected piece is not null, move it to the square clicked
+                    } 
+                    else if (ChessGame.board.getPieces().get(x).get(y).isWhite() == ChessGame.board.isWhiteTurn()) { // if the square clicked has a piece of the same color as the current turn
+
+                        ChessGame.board.clearHighlighted(); // clear the highlighted squares, highlight the possible moves of the piece clicked, set the selected piece to the piece clicked
+                        ArrayList<int[]> possibleMoves = ChessGame.board.getPieces().get(x).get(y).getPossibleMoves(x, y);
+                        ArrayList<int[]> highLighted = new ArrayList<int[]>();
+
+                        for (int[] square : possibleMoves) {
+                            if (!ChessGame.board.willThisMoveCauseCheck(x, y, square[0], square[1])) {
+                                highLighted.add(square);
+                            }
+                        }
+
+                        highLighted.add(new int[]{x, y});
+                        ChessGame.board.setHighlighted(highLighted);
+
+                        ChessGame.board.setSelectedPiece(new int[]{x, y});
                     }
-                } 
-                else if (ChessGame.board.getPieces().get(x).get(y).isWhite() == ChessGame.board.isWhiteTurn()) { // if the square clicked has a piece of the same color as the current turn
-
-                    ChessGame.board.clearHighlighted(); // clear the highlighted squares, highlight the possible moves of the piece clicked, set the selected piece to the piece clicked
-                    ArrayList<int[]> highLighted = ChessGame.board.getPieces().get(x).get(y).getPossibleMoves(x, y);
-                    highLighted.add(new int[]{x, y});
-                    ChessGame.board.setHighlighted(highLighted);
-
-                    ChessGame.board.setSelectedPiece(new int[]{x, y});
-                }
-                else if (selectedPiece != null) { // if the square clicked has a piece of the opposite color as the current turn
-                    tryToMovePiece(selectedPiece, x, y); // move the selected piece to the square clicked
+                    else if (selectedPiece != null) { // if the square clicked has a piece of the opposite color as the current turn
+                        tryToMovePiece(selectedPiece, x, y); // move the selected piece to the square clicked
+                    }
                 }
 
                 // redraw the board
@@ -103,11 +123,13 @@ public class ChessBoardPanel extends JPanel {
         });
     }
 
-    public static void tryToMovePiece(int[] selectedPiece, int x, int y){
+    public void tryToMovePiece(int[] selectedPiece, int x, int y){
         boolean validMove = false;
-        for (int[] square : ChessGame.board.getPieces().get(selectedPiece[0]).get(selectedPiece[1]).getPossibleMoves(selectedPiece[0], selectedPiece[1])) {
+        ChessGame.board.getHighlighted().remove(new int[]{x, y});
+        for (int[] square : ChessGame.board.getHighlighted()) {
             if (square[0] == x && square[1] == y) {
                 validMove = true;
+                break;
             }
         }
 
@@ -116,6 +138,14 @@ public class ChessBoardPanel extends JPanel {
             ChessGame.board.changeTurn();
             ChessGame.board.clearHighlighted();
             ChessGame.board.setSelectedPiece(null);
+            if (!ChessGame.board.canAMoveBeMade()) {
+                if (ChessGame.board.checkForCheck()) {
+                    ChessGame.board.setEnding("Checkmate");
+                }
+                else {
+                    ChessGame.board.setEnding("Stalemate");
+                }
+            }
         }
     }
 
