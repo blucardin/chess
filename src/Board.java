@@ -13,7 +13,7 @@ public class Board {
 
     private String ending = "";
 
-    private String nullString = "__";
+    private static String nullString = "__";
 
     private static final int WIDTH = 8, HEIGHT = 8;
 
