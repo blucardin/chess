@@ -9,7 +9,7 @@ public class King extends Piece {
 
     @Override
     public ArrayList<int[]> getPossibleMoves(int x, int y) {
-        ArrayList<int[]> possibleMoves = new ArrayList<int[]>();
+        ArrayList<int[]> possibleMoves = new ArrayList<>();
 
         // Define the eight possible directions the King can move
         ArrayList<int[]> directions = getKillMoves(x, y);
@@ -39,7 +39,7 @@ public class King extends Piece {
     }
 
     public static ArrayList<int[]> getKillMoves(int x, int y){
-        ArrayList<int[]> killMoves = new ArrayList<int[]>();
+        ArrayList<int[]> killMoves = new ArrayList<>();
         // Define the eight possible directions the King can move
         int[][] directions = {
             { -1, -1 }, { -1, 0 }, { -1, 1 },

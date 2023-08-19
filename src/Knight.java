@@ -9,7 +9,7 @@ public class Knight extends Piece {
 
     @Override
     public ArrayList<int[]> getPossibleMoves(int x, int y) {
-        ArrayList<int[]> possibleMoves = new ArrayList<int[]>();
+        ArrayList<int[]> possibleMoves = new ArrayList<>();
 
         // Define the eight possible knight move offsets
         int[][] knightMoveOffsets = {

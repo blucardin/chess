@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 
 public class Rook extends Piece {
@@ -9,7 +10,7 @@ public class Rook extends Piece {
 
     @Override
     public ArrayList<int[]> getPossibleMoves(int x, int y) {
-        ArrayList<int[]> possibleMoves = new ArrayList<int[]>();
+        ArrayList<int[]> possibleMoves = new ArrayList<>();
 
         // Check all the squares in the same row
         for (int i = x - 1; i >= 0; i--) {

@@ -9,7 +9,7 @@ public class Bishop extends Piece {
 
     @Override
     public ArrayList<int[]> getPossibleMoves(int x, int y) {
-        ArrayList<int[]> possibleMoves = new ArrayList<int[]>();
+        ArrayList<int[]> possibleMoves = new ArrayList<>();
 
         // Define the four diagonal directions the Bishop can move
         int[][] diagonalDirections = {

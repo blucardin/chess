@@ -9,7 +9,7 @@ public class Queen extends Piece {
 
     @Override
     public ArrayList<int[]> getPossibleMoves(int x, int y) {
-        ArrayList<int[]> possibleMoves = new ArrayList<int[]>();
+        ArrayList<int[]> possibleMoves = new ArrayList<>();
 
         // Check horizontal and vertical moves (similar to Rook)
         // Check leftwards (decreasing x)

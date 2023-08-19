@@ -9,7 +9,7 @@ public class Pawn extends Piece {
 
     @Override
     public ArrayList<int[]> getPossibleMoves(int x, int y) {
-        ArrayList<int[]> possibleMoves = new ArrayList<int[]>();
+        ArrayList<int[]> possibleMoves = new ArrayList<>();
 
         // Define the pawn's move directions based on its color
         int moveDirection = isWhite ? -1 : 1;

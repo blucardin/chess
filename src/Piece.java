@@ -16,10 +16,11 @@ abstract class Piece {
         return new ImageIcon("images/" + getFileString() + ".png").getImage();
     } 
 
+    @Override
     public abstract String toString();
 
     public String getFileString(){
-        String fileName = "";
+        String fileName;
         if (this.isWhite){
             fileName  =  "w" + filePrefix ;
         }

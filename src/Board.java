@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Board {
     private ArrayList<ArrayList<Piece>> pieces = new ArrayList<>();
@@ -14,12 +15,12 @@ public class Board {
 
     private String nullString = "__";
 
-    private static final int width = 8, height = 8;
+    private static final int WIDTH = 8, HEIGHT = 8;
 
     public Board() {
-        for (int i = 0; i < width; i++) {
+        for (int i = 0; i < WIDTH; i++) {
             ArrayList<Piece> row = new ArrayList<>();
-            for (int j = 0; j < height; j++) {
+            for (int j = 0; j < HEIGHT; j++) {
                 row.add(null);
             }
             this.pieces.add(row);
@@ -28,44 +29,29 @@ public class Board {
 
     //constructor for loading a board from a file
     public Board(String fileName) {
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(fileName));
-            String line = null;
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
             while ((line = br.readLine()) != null) {
-                String[] pieces = line.split(" ");
+                String[] rowPieces = line.split(" ");
                 ArrayList<Piece> row = new ArrayList<>();
-                for (int j = 0; j < width; j++) {
+                for (int j = 0; j < WIDTH; j++) {
 
                     Piece piece = null;
-                    switch (pieces[j].charAt(1)) {
-                        case 'p':
-                            piece = new Pawn(pieces[j].charAt(0) == 'w');
-                            break;
-                        case 'r':
-                            piece = new Rook(pieces[j].charAt(0) == 'w');
-                            break;
-                        case 'n':
-                            piece = new Knight(pieces[j].charAt(0) == 'w');
-                            break;
-                        case 'b':
-                            piece = new Bishop(pieces[j].charAt(0) == 'w');
-                            break;
-                        case 'q':
-                            piece = new Queen(pieces[j].charAt(0) == 'w');
-                            break;
-                        case 'k':
-                            piece = new King(pieces[j].charAt(0) == 'w');
-                            break;
-                        }
-                        row.add(piece);
+                    switch (rowPieces[j].charAt(1)) {
+                        case 'p' -> piece = new Pawn(rowPieces[j].charAt(0) == 'w');
+                        case 'r' -> piece = new Rook(rowPieces[j].charAt(0) == 'w');
+                        case 'n' -> piece = new Knight(rowPieces[j].charAt(0) == 'w');
+                        case 'b' -> piece = new Bishop(rowPieces[j].charAt(0) == 'w');
+                        case 'q' -> piece = new Queen(rowPieces[j].charAt(0) == 'w');
+                        case 'k' -> piece = new King(rowPieces[j].charAt(0) == 'w');
+                    }
+                    row.add(piece);
                 }
                 this.pieces.add(row);
             }
-            br.close();
 
         } catch (IOException e) {
             System.out.println("Error: file not found");
-            e.printStackTrace();
         }
     }
 
@@ -166,10 +152,10 @@ public class Board {
     }
 
     public static int getWidth() {
-        return width;
+        return WIDTH;
     }
     public static int getHeight() {
-        return height;
+        return HEIGHT;
     }
 
     public ArrayList<int[]> getHighlighted() {
@@ -205,7 +191,7 @@ public class Board {
     @Override
     public String toString() {
         return "Board [pieces=" + pieces + ", highlighted=" + highlighted + ", whiteTurn=" + whiteTurn
-                + ", selectedPiece=" + selectedPiece + "]";
+                + ", selectedPiece=" + Arrays.toString(selectedPiece) + "]";
     }
 
     public String toFileString() {

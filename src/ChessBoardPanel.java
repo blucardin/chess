@@ -98,7 +98,7 @@ public class ChessBoardPanel extends JPanel {
 
                         ChessGame.board.clearHighlighted(); // clear the highlighted squares, highlight the possible moves of the piece clicked, set the selected piece to the piece clicked
                         ArrayList<int[]> possibleMoves = ChessGame.board.getPieces().get(x).get(y).getPossibleMoves(x, y);
-                        ArrayList<int[]> highLighted = new ArrayList<int[]>();
+                        ArrayList<int[]> highLighted = new ArrayList<>();
 
                         for (int[] square : possibleMoves) {
                             if (!ChessGame.board.willThisMoveCauseCheck(x, y, square[0], square[1])) {
