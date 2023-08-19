@@ -27,7 +27,7 @@ public class Board {
         }
     }
 
-    //constructor for loading a board from a file
+    // constructor for loading a board from a file
     public Board(String fileName) {
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line;
@@ -55,7 +55,7 @@ public class Board {
         }
     }
 
-    public boolean checkForCheck(){
+    public boolean checkForCheck() {
         int kingX = -1;
         int kingY = -1;
 
@@ -75,12 +75,11 @@ public class Board {
 
                 if (piece != null && piece.isWhite() != whiteTurn) {
 
-                    ArrayList<int[]> possibleMovesOfOpponent;  
+                    ArrayList<int[]> possibleMovesOfOpponent;
 
                     if (piece instanceof King) {
                         possibleMovesOfOpponent = King.getKillMoves(i, j);
-                    }
-                    else {
+                    } else {
                         possibleMovesOfOpponent = piece.getPossibleMoves(i, j);
                     }
 
@@ -103,7 +102,7 @@ public class Board {
         return check;
     }
 
-    public boolean canAMoveBeMade(){
+    public boolean canAMoveBeMade() {
         for (int i = 0; i < Board.getHeight(); i++) {
             for (int j = 0; j < Board.getWidth(); j++) {
                 Piece piece = pieces.get(i).get(j);
@@ -154,6 +153,7 @@ public class Board {
     public static int getWidth() {
         return WIDTH;
     }
+
     public static int getHeight() {
         return HEIGHT;
     }

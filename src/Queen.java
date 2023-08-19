@@ -15,10 +15,10 @@ public class Queen extends Piece {
         // Check leftwards (decreasing x)
         for (int i = x - 1; i >= 0; i--) {
             if (ChessGame.board.getPieces().get(i).get(y) == null) {
-                possibleMoves.add(new int[]{i, y});
+                possibleMoves.add(new int[] { i, y });
             } else {
                 if (ChessGame.board.getPieces().get(i).get(y).isWhite() != isWhite) {
-                    possibleMoves.add(new int[]{i, y});
+                    possibleMoves.add(new int[] { i, y });
                 }
                 break;
             }
@@ -26,10 +26,10 @@ public class Queen extends Piece {
         // Check rightwards (increasing x)
         for (int i = x + 1; i < 8; i++) {
             if (ChessGame.board.getPieces().get(i).get(y) == null) {
-                possibleMoves.add(new int[]{i, y});
+                possibleMoves.add(new int[] { i, y });
             } else {
                 if (ChessGame.board.getPieces().get(i).get(y).isWhite() != isWhite) {
-                    possibleMoves.add(new int[]{i, y});
+                    possibleMoves.add(new int[] { i, y });
                 }
                 break;
             }
@@ -37,10 +37,10 @@ public class Queen extends Piece {
         // Check upwards (decreasing y)
         for (int j = y - 1; j >= 0; j--) {
             if (ChessGame.board.getPieces().get(x).get(j) == null) {
-                possibleMoves.add(new int[]{x, j});
+                possibleMoves.add(new int[] { x, j });
             } else {
                 if (ChessGame.board.getPieces().get(x).get(j).isWhite() != isWhite) {
-                    possibleMoves.add(new int[]{x, j});
+                    possibleMoves.add(new int[] { x, j });
                 }
                 break;
             }
@@ -48,10 +48,10 @@ public class Queen extends Piece {
         // Check downwards (increasing y)
         for (int j = y + 1; j < 8; j++) {
             if (ChessGame.board.getPieces().get(x).get(j) == null) {
-                possibleMoves.add(new int[]{x, j});
+                possibleMoves.add(new int[] { x, j });
             } else {
                 if (ChessGame.board.getPieces().get(x).get(j).isWhite() != isWhite) {
-                    possibleMoves.add(new int[]{x, j});
+                    possibleMoves.add(new int[] { x, j });
                 }
                 break;
             }
@@ -63,10 +63,10 @@ public class Queen extends Piece {
         int j = y - 1;
         while (i >= 0 && j >= 0) {
             if (ChessGame.board.getPieces().get(i).get(j) == null) {
-                possibleMoves.add(new int[]{i, j});
+                possibleMoves.add(new int[] { i, j });
             } else {
                 if (ChessGame.board.getPieces().get(i).get(j).isWhite() != isWhite) {
-                    possibleMoves.add(new int[]{i, j});
+                    possibleMoves.add(new int[] { i, j });
                 }
                 break;
             }
@@ -79,10 +79,10 @@ public class Queen extends Piece {
         j = y - 1;
         while (i < 8 && j >= 0) {
             if (ChessGame.board.getPieces().get(i).get(j) == null) {
-                possibleMoves.add(new int[]{i, j});
+                possibleMoves.add(new int[] { i, j });
             } else {
                 if (ChessGame.board.getPieces().get(i).get(j).isWhite() != isWhite) {
-                    possibleMoves.add(new int[]{i, j});
+                    possibleMoves.add(new int[] { i, j });
                 }
                 break;
             }
@@ -95,10 +95,10 @@ public class Queen extends Piece {
         j = y + 1;
         while (i >= 0 && j < 8) {
             if (ChessGame.board.getPieces().get(i).get(j) == null) {
-                possibleMoves.add(new int[]{i, j});
+                possibleMoves.add(new int[] { i, j });
             } else {
                 if (ChessGame.board.getPieces().get(i).get(j).isWhite() != isWhite) {
-                    possibleMoves.add(new int[]{i, j});
+                    possibleMoves.add(new int[] { i, j });
                 }
                 break;
             }
@@ -111,10 +111,10 @@ public class Queen extends Piece {
         j = y + 1;
         while (i < 8 && j < 8) {
             if (ChessGame.board.getPieces().get(i).get(j) == null) {
-                possibleMoves.add(new int[]{i, j});
+                possibleMoves.add(new int[] { i, j });
             } else {
                 if (ChessGame.board.getPieces().get(i).get(j).isWhite() != isWhite) {
-                    possibleMoves.add(new int[]{i, j});
+                    possibleMoves.add(new int[] { i, j });
                 }
                 break;
             }

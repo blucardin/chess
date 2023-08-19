@@ -14,17 +14,16 @@ abstract class Piece {
     public Image getImage() {
 
         return new ImageIcon("images/" + getFileString() + ".png").getImage();
-    } 
+    }
 
     @Override
     public abstract String toString();
 
-    public String getFileString(){
+    public String getFileString() {
         String fileName;
-        if (this.isWhite){
-            fileName  =  "w" + filePrefix ;
-        }
-        else{
+        if (this.isWhite) {
+            fileName = "w" + filePrefix;
+        } else {
             fileName = "b" + filePrefix;
         }
         return fileName;
@@ -38,5 +37,5 @@ abstract class Piece {
     public boolean isValidPosition(int x, int y) {
         return x >= 0 && x < Board.getWidth() && y >= 0 && y < Board.getHeight();
     }
-    
+
 }

@@ -18,19 +18,18 @@ public class ChessBoardPanel extends JPanel {
         // set the color to a low intensity green
         g.setColor(new Color(0, 128, 0));
 
-
-        int boardWidth = Board.getWidth(); 
-        int boardHeight = Board.getHeight(); 
+        int boardWidth = Board.getWidth();
+        int boardHeight = Board.getHeight();
 
         // create the dark squares
-        for (int i = 0; i < boardWidth; i+=2) {
-            for (int j = 1; j < boardHeight; j+=2) {
+        for (int i = 0; i < boardWidth; i += 2) {
+            for (int j = 1; j < boardHeight; j += 2) {
                 g.fillRect(i * width / boardWidth, j * height / boardHeight, width / boardWidth, height / boardHeight);
             }
         }
 
-        for (int i = 1; i < boardWidth; i+=2) {
-            for (int j = 0; j < boardHeight; j+=2) {
+        for (int i = 1; i < boardWidth; i += 2) {
+            for (int j = 0; j < boardHeight; j += 2) {
                 g.fillRect(i * width / boardWidth, j * height / boardHeight, width / boardWidth, height / boardHeight);
             }
         }
@@ -45,7 +44,8 @@ public class ChessBoardPanel extends JPanel {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 if (ChessGame.board.getPieces().get(i).get(j) != null) {
-                    g.drawImage(ChessGame.board.getPieces().get(i).get(j).getImage(), i * width / 8, j * height / 8, width / 8, height / 8, null);
+                    g.drawImage(ChessGame.board.getPieces().get(i).get(j).getImage(), i * width / 8, j * height / 8,
+                            width / 8, height / 8, null);
                 }
             }
         }
@@ -72,8 +72,8 @@ public class ChessBoardPanel extends JPanel {
             @Override
             public void mousePressed(MouseEvent e) {
                 // This method will be called when the canvas is clicked
-                int mouseX = e.getX();  // X-coordinate of the mouse click
-                int mouseY = e.getY();  // Y-coordinate of the mouse click
+                int mouseX = e.getX(); // X-coordinate of the mouse click
+                int mouseY = e.getY(); // Y-coordinate of the mouse click
 
                 int width = getWidth();
                 int height = getHeight();
@@ -86,18 +86,35 @@ public class ChessBoardPanel extends JPanel {
 
                 int[] selectedPiece = ChessGame.board.getSelectedPiece();
 
-                if (ChessGame.board.getEnding().equals("")){
-                    
-                    if (ChessGame.board.getPieces().get(x).get(y) == null){ // if the square clicked is empty
-                        if (selectedPiece != null) { 
-                            tryToMovePiece(selectedPiece, x, y); 
-                        }
-                        ChessGame.board.clearHighlighted(); // clear the highlighted squares, if the selected piece is not null, move it to the square clicked
-                    } 
-                    else if (ChessGame.board.getPieces().get(x).get(y).isWhite() == ChessGame.board.isWhiteTurn()) { // if the square clicked has a piece of the same color as the current turn
+                if (ChessGame.board.getEnding().equals("")) {
 
-                        ChessGame.board.clearHighlighted(); // clear the highlighted squares, highlight the possible moves of the piece clicked, set the selected piece to the piece clicked
-                        ArrayList<int[]> possibleMoves = ChessGame.board.getPieces().get(x).get(y).getPossibleMoves(x, y);
+                    if (ChessGame.board.getPieces().get(x).get(y) == null) { // if the square clicked is empty
+                        if (selectedPiece != null) {
+                            tryToMovePiece(selectedPiece, x, y);
+                        }
+                        ChessGame.board.clearHighlighted(); // clear the highlighted squares, if the selected piece is
+                                                            // not null, move it to the square clicked
+                    } else if (ChessGame.board.getPieces().get(x).get(y).isWhite() == ChessGame.board.isWhiteTurn()) { // if
+                                                                                                                       // the
+                                                                                                                       // square
+                                                                                                                       // clicked
+                                                                                                                       // has
+                                                                                                                       // a
+                                                                                                                       // piece
+                                                                                                                       // of
+                                                                                                                       // the
+                                                                                                                       // same
+                                                                                                                       // color
+                                                                                                                       // as
+                                                                                                                       // the
+                                                                                                                       // current
+                                                                                                                       // turn
+
+                        ChessGame.board.clearHighlighted(); // clear the highlighted squares, highlight the possible
+                                                            // moves of the piece clicked, set the selected piece to the
+                                                            // piece clicked
+                        ArrayList<int[]> possibleMoves = ChessGame.board.getPieces().get(x).get(y).getPossibleMoves(x,
+                                y);
                         ArrayList<int[]> highLighted = new ArrayList<>();
 
                         for (int[] square : possibleMoves) {
@@ -106,12 +123,12 @@ public class ChessBoardPanel extends JPanel {
                             }
                         }
 
-                        highLighted.add(new int[]{x, y});
+                        highLighted.add(new int[] { x, y });
                         ChessGame.board.setHighlighted(highLighted);
 
-                        ChessGame.board.setSelectedPiece(new int[]{x, y});
-                    }
-                    else if (selectedPiece != null) { // if the square clicked has a piece of the opposite color as the current turn
+                        ChessGame.board.setSelectedPiece(new int[] { x, y });
+                    } else if (selectedPiece != null) { // if the square clicked has a piece of the opposite color as
+                                                        // the current turn
                         tryToMovePiece(selectedPiece, x, y); // move the selected piece to the square clicked
                     }
                 }
@@ -123,9 +140,9 @@ public class ChessBoardPanel extends JPanel {
         });
     }
 
-    public void tryToMovePiece(int[] selectedPiece, int x, int y){
+    public void tryToMovePiece(int[] selectedPiece, int x, int y) {
         boolean validMove = false;
-        ChessGame.board.getHighlighted().remove(new int[]{x, y});
+        ChessGame.board.getHighlighted().remove(new int[] { x, y });
         for (int[] square : ChessGame.board.getHighlighted()) {
             if (square[0] == x && square[1] == y) {
                 validMove = true;
@@ -141,8 +158,7 @@ public class ChessBoardPanel extends JPanel {
             if (!ChessGame.board.canAMoveBeMade()) {
                 if (ChessGame.board.checkForCheck()) {
                     ChessGame.board.setEnding("Checkmate");
-                }
-                else {
+                } else {
                     ChessGame.board.setEnding("Stalemate");
                 }
             }

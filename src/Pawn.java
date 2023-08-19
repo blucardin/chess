@@ -18,13 +18,13 @@ public class Pawn extends Piece {
         int newX = x;
         int newY = y + moveDirection;
         if (isValidPosition(newX, newY) && ChessGame.board.getPieces().get(newX).get(newY) == null) {
-            possibleMoves.add(new int[]{newX, newY});
-            
+            possibleMoves.add(new int[] { newX, newY });
+
             // If pawn is on its starting position, check if it can move two squares forward
             if ((isWhite && y == 6) || (!isWhite && y == 1)) {
                 newY = y + 2 * moveDirection;
                 if (ChessGame.board.getPieces().get(newX).get(newY) == null) {
-                    possibleMoves.add(new int[]{newX, newY});
+                    possibleMoves.add(new int[] { newX, newY });
                 }
             }
         }
@@ -37,7 +37,7 @@ public class Pawn extends Piece {
             if (isValidPosition(newX, newY)) {
                 Piece targetPiece = ChessGame.board.getPieces().get(newX).get(newY);
                 if (targetPiece != null && targetPiece.isWhite() != isWhite) {
-                    possibleMoves.add(new int[]{newX, newY});
+                    possibleMoves.add(new int[] { newX, newY });
                 }
             }
         }

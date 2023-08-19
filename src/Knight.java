@@ -13,10 +13,10 @@ public class Knight extends Piece {
 
         // Define the eight possible knight move offsets
         int[][] knightMoveOffsets = {
-            { -2, -1 }, { -1, -2 },
-            { -2, 1 }, { -1, 2 },
-            { 2, -1 }, { 1, -2 },
-            { 2, 1 }, { 1, 2 }
+                { -2, -1 }, { -1, -2 },
+                { -2, 1 }, { -1, 2 },
+                { 2, -1 }, { 1, -2 },
+                { 2, 1 }, { 1, 2 }
         };
 
         // Check each knight move offset for possible moves
@@ -30,15 +30,13 @@ public class Knight extends Piece {
 
                 // Check if the new position is empty or occupied by an opponent's piece
                 if (targetPiece == null || targetPiece.isWhite() != isWhite) {
-                    possibleMoves.add(new int[]{newX, newY});
+                    possibleMoves.add(new int[] { newX, newY });
                 }
             }
         }
 
         return possibleMoves;
     }
-
-
 
     @Override
     public String toString() {

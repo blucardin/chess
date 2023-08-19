@@ -6,7 +6,7 @@ public class ChessGame {
     static Board board = new Board("defaultBoard.txt");
 
     public static void main(String[] args) {
-        
+
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("Chess Game");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -18,5 +18,5 @@ public class ChessGame {
             frame.setVisible(true);
         });
     }
-    
+
 }
