@@ -26,38 +26,49 @@ public class StartPane1 extends javax.swing.JPanel {
     private void initComponents() {
 
         btnStartGame = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        btnStartGame.setText("Start Game");
+        btnStartGame.setText("Click Here to Begin");
         btnStartGame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStartGameActionPerformed(evt);
             }
         });
 
+        jLabel1.setText("Welcome to Chess");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(143, 143, 143)
-                .addComponent(btnStartGame)
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(144, 144, 144)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(128, 128, 128)
+                        .addComponent(btnStartGame)))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(117, 117, 117)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
                 .addComponent(btnStartGame)
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addGap(62, 62, 62))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnStartGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartGameActionPerformed
-        ChessGame.cardLayout.show(ChessGame.cardPanel, "ChessBoardPanel");
+        ChessGame.cardLayout.show(ChessGame.cardPanel, "LoginPanel");
     }//GEN-LAST:event_btnStartGameActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnStartGame;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

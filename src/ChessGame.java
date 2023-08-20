@@ -7,8 +7,11 @@ public class ChessGame extends JFrame {
     private StartPane1 startPane1;
     private ChessBoardPanel chessBoardPanel;
     private HelpScreen helpScreen; 
+    private LoginPanel loginPanel; 
+    private MainMenu mainMenu; 
 
     public static Board board = new Board("defaultBoard.txt");
+    public static Session session = new Session(); 
 
     public ChessGame() {
         // Create the JFrame
@@ -24,11 +27,15 @@ public class ChessGame extends JFrame {
         startPane1 = new StartPane1();
         chessBoardPanel = new ChessBoardPanel();
         helpScreen = new HelpScreen(); 
+        loginPanel = new LoginPanel(); 
+        mainMenu = new MainMenu(); 
 
         // Add panels to the cardPanel
         cardPanel.add(startPane1, "StartPanel");
         cardPanel.add(chessBoardPanel, "ChessBoardPanel");
         cardPanel.add( helpScreen, "HelpScreen");
+        cardPanel.add(loginPanel, "LoginPanel");
+        cardPanel.add(mainMenu, "MainMenu"); 
 
         // Add the cardPanel to the JFrame
         add(cardPanel);
