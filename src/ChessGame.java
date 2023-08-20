@@ -1,22 +1,45 @@
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
+import java.awt.*;
 
-public class ChessGame {
+public class ChessGame extends JFrame {
+    public static CardLayout cardLayout;
+    public static JPanel cardPanel;
+    private StartPane1 startPane1;
+    private ChessBoardPanel chessBoardPanel;
 
-    static Board board = new Board("defaultBoard.txt");
+    public static Board board = new Board("defaultBoard.txt");
 
-    public static void main(String[] args) {
+    public ChessGame() {
+        // Create the JFrame
+        super("Chess Game");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(600, 600);
 
-        SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("Chess Game");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // Initialize the CardLayout and the cardPanel to hold the two panels
+        cardLayout = new CardLayout();
+        cardPanel = new JPanel(cardLayout);
 
-            ChessBoardPanel chessPanel = new ChessBoardPanel();
-            frame.add(chessPanel);
+        // Create instances of panels
+        startPane1 = new StartPane1();
+        chessBoardPanel = new ChessBoardPanel();
 
-            frame.pack();
-            frame.setVisible(true);
-        });
+        // Add panels to the cardPanel
+        cardPanel.add(startPane1, "StartPanel");
+        cardPanel.add(chessBoardPanel, "ChessBoardPanel");
+
+        // Add the cardPanel to the JFrame
+        add(cardPanel);
+
+        // Initially, show the startPane1
+        cardLayout.show(cardPanel, "StartPanel");
     }
 
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new ChessGame().setVisible(true);
+            }
+        });
+    }
 }

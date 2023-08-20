@@ -1,11 +1,9 @@
-import javax.swing.*;
-
 import java.awt.*;
 import java.util.ArrayList;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class ChessBoardPanel extends JPanel {
+public class ChessBoardPanel extends javax.swing.JPanel {
     // Override the paintComponent method for custom drawing
     @Override
     protected void paintComponent(Graphics g) {
@@ -61,12 +59,6 @@ public class ChessBoardPanel extends JPanel {
 
     }
 
-    // Override the getPreferredSize method to return the desired width and height
-    @Override
-    public Dimension getPreferredSize() {
-        return new Dimension(500, 500);
-    }
-
     public ChessBoardPanel() {
         addMouseListener(new MouseAdapter() {
             @Override
@@ -94,22 +86,8 @@ public class ChessBoardPanel extends JPanel {
                         }
                         ChessGame.board.clearHighlighted(); // clear the highlighted squares, if the selected piece is
                                                             // not null, move it to the square clicked
-                    } else if (ChessGame.board.getPieces().get(x).get(y).isWhite() == ChessGame.board.isWhiteTurn()) { // if
-                                                                                                                       // the
-                                                                                                                       // square
-                                                                                                                       // clicked
-                                                                                                                       // has
-                                                                                                                       // a
-                                                                                                                       // piece
-                                                                                                                       // of
-                                                                                                                       // the
-                                                                                                                       // same
-                                                                                                                       // color
-                                                                                                                       // as
-                                                                                                                       // the
-                                                                                                                       // current
-                                                                                                                       // turn
-
+                    } else if (ChessGame.board.getPieces().get(x).get(y).isWhite() == ChessGame.board.isWhiteTurn()) {
+                        // if the square clicked has a piece of the same color as the current turn
                         ChessGame.board.clearHighlighted(); // clear the highlighted squares, highlight the possible
                                                             // moves of the piece clicked, set the selected piece to the
                                                             // piece clicked
