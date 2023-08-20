@@ -38,12 +38,24 @@ public class Board {
 
                     Piece piece = null;
                     switch (rowPieces[j].charAt(1)) {
-                        case 'p' -> piece = new Pawn(rowPieces[j].charAt(0) == 'w');
-                        case 'r' -> piece = new Rook(rowPieces[j].charAt(0) == 'w');
-                        case 'n' -> piece = new Knight(rowPieces[j].charAt(0) == 'w');
-                        case 'b' -> piece = new Bishop(rowPieces[j].charAt(0) == 'w');
-                        case 'q' -> piece = new Queen(rowPieces[j].charAt(0) == 'w');
-                        case 'k' -> piece = new King(rowPieces[j].charAt(0) == 'w');
+                        case 'p':
+                            piece = new Pawn(rowPieces[j].charAt(0) == 'w');
+                            break;
+                        case 'r':
+                            piece = new Rook(rowPieces[j].charAt(0) == 'w');
+                            break;
+                        case 'n':
+                            piece = new Knight(rowPieces[j].charAt(0) == 'w');
+                            break;
+                        case 'b':
+                            piece = new Bishop(rowPieces[j].charAt(0) == 'w');
+                            break;
+                        case 'q':
+                            piece = new Queen(rowPieces[j].charAt(0) == 'w');
+                            break;
+                        case 'k':
+                            piece = new King(rowPieces[j].charAt(0) == 'w');
+                            break;
                     }
                     row.add(piece);
                 }
