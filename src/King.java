@@ -36,6 +36,44 @@ public class King extends Piece {
 
             }
         }
+
+        // Castling
+        ArrayList<ArrayList<Piece>> board = ChessGame.board.getPieces();
+        // Insert logic here
+        if (isWhite) {
+            if (ChessGame.board.getWhiteCanCastle()[0]) {
+                if (board.get(1).get(7) == null && board.get(2).get(7) == null && board.get(3).get(7) == null) {
+                    if (!ChessGame.board.willThisMoveCauseCheck(4, 7, 3, 7) && !ChessGame.board.willThisMoveCauseCheck(4, 7, 2, 7) && !ChessGame.board.willThisMoveCauseCheck(4, 7, 1, 7)) {
+                        possibleMoves.add(new int[]{2, 7});
+                    }
+                }
+            }
+            if (ChessGame.board.getWhiteCanCastle()[1]) {
+                if (board.get(5).get(7) == null && board.get(6).get(7) == null) {
+                    if (!ChessGame.board.willThisMoveCauseCheck(4, 7, 5, 7) && !ChessGame.board.willThisMoveCauseCheck(4, 7, 6, 7)) {
+                        possibleMoves.add(new int[]{6, 7});
+                    }
+                }
+            }
+        }
+        else {
+            if (ChessGame.board.getBlackCanCastle()[0]) {
+                if (board.get(1).get(0) == null && board.get(2).get(0) == null && board.get(3).get(0) == null) {
+                    if (!ChessGame.board.willThisMoveCauseCheck(4, 0, 3, 0) && !ChessGame.board.willThisMoveCauseCheck(4, 0, 2, 0) && !ChessGame.board.willThisMoveCauseCheck(4, 0, 1, 0)) {
+                        possibleMoves.add(new int[]{2, 0});
+                    }
+                }
+            }
+            if (ChessGame.board.getBlackCanCastle()[1]) {
+                if (board.get(5).get(0) == null && board.get(6).get(0) == null) {
+                    if (!ChessGame.board.willThisMoveCauseCheck(4, 0, 5, 0) && !ChessGame.board.willThisMoveCauseCheck(4, 0, 6, 0)) {
+                        possibleMoves.add(new int[]{6, 0});
+                    }
+                }
+            }
+        }
+
+
         return possibleMoves;
     }
 

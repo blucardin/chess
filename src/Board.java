@@ -11,6 +11,8 @@ public class Board {
     private boolean whiteTurn = true;
     private int[] selectedPiece = null;
 
+    private boolean[] whiteCanCastle = {true, true}, blackCanCastle = {true, true};
+
     private String ending = "";
 
     private static String nullString = "__";
@@ -132,6 +134,22 @@ public class Board {
             }
         }
         return false;
+    }
+
+    public boolean[] getWhiteCanCastle() {
+        return whiteCanCastle;
+    }
+
+    public void setWhiteCanCastle(boolean[] whiteCanCastle) {
+        this.whiteCanCastle = whiteCanCastle;
+    }
+
+    public boolean[] getBlackCanCastle() {
+        return blackCanCastle;
+    }
+
+    public void setBlackCanCastle(boolean[] blackCanCastle) {
+        this.blackCanCastle = blackCanCastle;
     }
 
     public boolean isWhiteTurn() {

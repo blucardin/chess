@@ -130,16 +130,55 @@ public class ChessBoardPanel extends javax.swing.JPanel {
 
         if (validMove) {
             ChessGame.board.movePiece(selectedPiece[0], selectedPiece[1], x, y);
-            ChessGame.board.changeTurn();
-            ChessGame.board.clearHighlighted();
-            ChessGame.board.setSelectedPiece(null);
+
+            // if it is a castle, move the rook
+            if (ChessGame.board.getPieces().get(x).get(y) instanceof King) {
+                if (Math.abs(x - selectedPiece[0]) == 2) {
+                    if (x == 2) {
+                        ChessGame.board.movePiece(0, y, 3, y);
+                    } else if (x == 6) {
+                        ChessGame.board.movePiece(7, y, 5, y);
+                    }
+                }
+            }
+
+            // if the king moves, or the rook moves, the castling is no longer possible
+            if (ChessGame.board.getPieces().get(x).get(y) instanceof King) {
+                if (ChessGame.board.getPieces().get(x).get(y).isWhite()) {
+                    ChessGame.board.getWhiteCanCastle()[0] = false;
+                    ChessGame.board.getWhiteCanCastle()[1] = false;
+                } else {
+                    ChessGame.board.getBlackCanCastle()[0] = false;
+                    ChessGame.board.getBlackCanCastle()[1] = false;
+                }
+            } else if (ChessGame.board.getPieces().get(x).get(y) instanceof Rook) {
+                if (ChessGame.board.getPieces().get(x).get(y).isWhite()) {
+                    if (x == 0) {
+                        ChessGame.board.getWhiteCanCastle()[0] = false;
+                    } else if (x == 7) {
+                        ChessGame.board.getWhiteCanCastle()[1] = false;
+                    }
+                } else {
+                    if (x == 0) {
+                        ChessGame.board.getBlackCanCastle()[0] = false;
+                    } else if (x == 7) {
+                        ChessGame.board.getBlackCanCastle()[1] = false;
+                    }
+                }
+            }
+
             if (!ChessGame.board.canAMoveBeMade()) {
                 if (ChessGame.board.checkForCheck()) {
-                    ChessGame.board.setEnding("Checkmate");
+                    ChessGame.board.setEnding("Checkmate " + (ChessGame.board.isWhiteTurn() ? "Black" : "White") + " wins");
                 } else {
                     ChessGame.board.setEnding("Stalemate");
                 }
             }
+
+            ChessGame.board.changeTurn();
+            ChessGame.board.clearHighlighted();
+            ChessGame.board.setSelectedPiece(null);
+
         }
     }
 
