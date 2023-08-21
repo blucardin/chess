@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Board {
-    private ArrayList<ArrayList<Piece>> pieces = new ArrayList<>();
+    private ArrayList<ArrayList<Piece>> pieces = new ArrayList<>(); // Array List
     private ArrayList<int[]> highlighted = new ArrayList<>(); // Array list
 
     private boolean whiteTurn = true;
