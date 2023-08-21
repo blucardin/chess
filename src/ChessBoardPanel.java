@@ -230,6 +230,26 @@ public class ChessBoardPanel extends javax.swing.JPanel {
                 }
             }
 
+            // if the pawn captures en passant, remove the captured pawn
+            if (ChessGame.board.getPieces().get(x).get(y) instanceof Pawn) {
+                if (ChessGame.board.getEnPassant() != null) {
+                    if (x == ChessGame.board.getEnPassant()[0] && y == ChessGame.board.getEnPassant()[1]) {
+                        ChessGame.board.getPieces().get(x).set(selectedPiece[1], null);
+                    }
+                }
+            }
+
+            // if the pawn moves two squares forward, set the en passant square
+            if (ChessGame.board.getPieces().get(x).get(y) instanceof Pawn) {
+                if (Math.abs(y - selectedPiece[1]) == 2) {
+                    ChessGame.board.setEnPassant(new int[] { x, (y + selectedPiece[1]) / 2 });
+                } else {
+                    ChessGame.board.setEnPassant(null);
+                }
+            } else {
+                ChessGame.board.setEnPassant(null);
+            }
+
             ChessGame.board.changeTurn();
             ChessGame.board.clearHighlighted();
             ChessGame.board.setSelectedPiece(null);

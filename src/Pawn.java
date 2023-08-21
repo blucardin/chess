@@ -42,6 +42,17 @@ public class Pawn extends Piece {
             }
         }
 
+        // Check for en passant
+        if (ChessGame.board.getEnPassant() != null) {
+            newX = ChessGame.board.getEnPassant()[0];
+            newY = ChessGame.board.getEnPassant()[1];
+            if (newX == x + 1 || newX == x - 1) {
+                if (newY == y + moveDirection) {
+                    possibleMoves.add(new int[] { newX, newY });
+                }
+            }
+        }
+
         return possibleMoves;
     }
 

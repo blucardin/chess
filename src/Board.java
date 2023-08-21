@@ -12,7 +12,7 @@ public class Board {
 
     private boolean whiteTurn = true;
     private int[] selectedPiece = null;
-    private int[] promotion;
+    private int[] promotion, enPassant;
 
     private boolean[] whiteCanCastle = {true, true}, blackCanCastle = {true, true};
 
@@ -145,6 +145,14 @@ public class Board {
 
     public void setPromotion(int[] promotion) {
         this.promotion = promotion;
+    }
+
+    public int[] getEnPassant() {
+        return enPassant;
+    }
+
+    public void setEnPassant(int[] enPassant) {
+        this.enPassant = enPassant;
     }
 
     public boolean[] getWhiteCanCastle() {
