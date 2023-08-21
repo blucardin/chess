@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+// add test commit
+
 public class Board {
     private ArrayList<ArrayList<Piece>> pieces = new ArrayList<>();
     private ArrayList<int[]> highlighted = new ArrayList<>();
