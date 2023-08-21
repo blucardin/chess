@@ -12,6 +12,7 @@ public class Board {
 
     private boolean whiteTurn = true;
     private int[] selectedPiece = null;
+    private int[] promotion;
 
     private boolean[] whiteCanCastle = {true, true}, blackCanCastle = {true, true};
 
@@ -136,6 +137,14 @@ public class Board {
             }
         }
         return false;
+    }
+
+    public int[] getPromotion() {
+        return promotion;
+    }
+
+    public void setPromotion(int[] promotion) {
+        this.promotion = promotion;
     }
 
     public boolean[] getWhiteCanCastle() {

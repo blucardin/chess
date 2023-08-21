@@ -50,11 +50,33 @@ public class ChessBoardPanel extends javax.swing.JPanel {
 
         // display the ending message
         if (!ChessGame.board.getEnding().equals("")) {
-            g.setColor(new Color(0, 0, 0, 128));
+            g.setColor(new Color(0, 0, 0, 100));
             g.fillRect(0, 0, width, height);
             g.setColor(new Color(255, 255, 255));
             g.setFont(new Font("TimesRoman", Font.PLAIN, 50));
             g.drawString(ChessGame.board.getEnding(), width / 2 - 100, height / 2);
+        }
+
+        // if promotion is available, display the promotion options
+        if (ChessGame.board.getPromotion() != null) {
+            g.setColor(new Color(0, 0, 0, 100));
+            g.fillRect(0, 0, width, height);
+            g.setColor(new Color(255, 255, 255));
+            g.setFont(new Font("TimesRoman", Font.PLAIN, 50));
+            g.drawString("Promote to:", width / 2 - 100, height / 2 - 100);
+
+            boolean color = ChessGame.board.getPieces().get(ChessGame.board.getPromotion()[0]).get(ChessGame.board.getPromotion()[1]).isWhite();
+
+            // draw the pices in a horizontal line  in the middle of the screen
+
+            // draw a box around the options
+            g.setColor(new Color(255, 255, 255));
+            g.fillRect(width / 2 - width / 8, height / 2, width / 4 , height / 4);
+
+            g.drawImage(new Queen(color).getImage(), width / 2 - width / 8, height / 2, width / 8, height / 8, null);
+            g.drawImage(new Rook(color).getImage(), width / 2, height / 2, width / 8, height / 8, null);
+            g.drawImage(new Bishop(color).getImage(), width / 2 - width / 8, height / 2 + height / 8, width / 8, height / 8, null);
+            g.drawImage(new Knight(color).getImage(), width / 2, height / 2 + height / 8, width / 8, height / 8, null);
         }
 
     }
@@ -75,6 +97,25 @@ public class ChessBoardPanel extends javax.swing.JPanel {
 
                 int x = mouseX / (width / boardWidth);
                 int y = mouseY / (height / boardHeight);
+
+                int[] promotion = ChessGame.board.getPromotion();
+                if (promotion != null) {
+                    if (x >= 3 && x <= 4 && y >= 4 && y <= 5) {
+                        boolean color = ChessGame.board.getPieces().get(promotion[0]).get(promotion[1]).isWhite();
+                        if (x == 3 && y == 5) {
+                            ChessGame.board.getPieces().get(promotion[0]).set(promotion[1], new Bishop(color));
+                        } else if (x == 4 && y == 5) {
+                            ChessGame.board.getPieces().get(promotion[0]).set(promotion[1], new Knight(color));
+                        } else if (x == 3 && y == 4) {
+                            ChessGame.board.getPieces().get(promotion[0]).set(promotion[1], new Queen(color));
+                        } else if (x == 4 && y == 4) {
+                            ChessGame.board.getPieces().get(promotion[0]).set(promotion[1], new Rook(color));
+                        }
+                        ChessGame.board.setPromotion(null);
+                    }
+                    repaint();
+                    return;
+                }
 
                 int[] selectedPiece = ChessGame.board.getSelectedPiece();
 
@@ -172,6 +213,20 @@ public class ChessBoardPanel extends javax.swing.JPanel {
                     ChessGame.board.setEnding("Checkmate " + (ChessGame.board.isWhiteTurn() ? "Black" : "White") + " wins");
                 } else {
                     ChessGame.board.setEnding("Stalemate");
+                }
+            }
+
+            // If a pawn reaches the end of the board, give the player the option to promote it to a queen, rook, bishop, or knight
+
+            if (ChessGame.board.getPieces().get(x).get(y) instanceof Pawn) {
+                if (ChessGame.board.getPieces().get(x).get(y).isWhite()) {
+                    if (y == 0) {
+                        ChessGame.board.setPromotion(new int[] { x, y });
+                    }
+                } else {
+                    if (y == 7) {
+                        ChessGame.board.setPromotion(new int[] { x, y });
+                    }
                 }
             }
 
