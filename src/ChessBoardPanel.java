@@ -132,6 +132,10 @@ public class ChessBoardPanel extends javax.swing.JPanel {
                     return;
                 }
 
+                if (x < 0 || x > 7 || y < 0 || y > 7) {
+                    return;
+                }
+                
                 int[] selectedPiece = ChessGame.board.getSelectedPiece();
 
                 if (ChessGame.board.getEnding().equals("")) {
