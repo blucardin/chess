@@ -1,45 +1,44 @@
 import java.util.ArrayList;
 
 public class King extends Piece {
-
+    // stores the iswhite variable
     public King(boolean isWhite) {
+        // stores it for the king object
         this.isWhite = isWhite;
-        filePrefix = "k"; // File prefix for image file name
+        // file prefix for image file name 
+        filePrefix = "k"; 
     }
-
+    // overrides the abstract method
     @Override
     public ArrayList<int[]> getPossibleMoves(int x, int y) {
+        // creates an array list of all the possible moves
         ArrayList<int[]> possibleMoves = new ArrayList<>();
-
         // Define the eight possible directions the King can move
         ArrayList<int[]> directions = getKillMoves(x, y);
-
         // Check each direction for possible movess
         for (int[] direction : directions) {
+            // creates new x cord to check if possible
             int newX = direction[0];
+            // creates new y cord to check if possible
             int newY = direction[1];
-
             // Check if the new position is within the bounds of the chessboard
             if (isValidPosition(newX, newY)) {
-
+                // gets the piece with the new cords
                 Piece targetPiece = ChessGame.board.getPieces().get(newX).get(newY);
-
-                // if the position is not empty and is occupied a piece of the same color, go to
-                // the next direction
+                // if the position is not empty and is occupied a piece of the same color, go to the next direction
                 if (targetPiece != null) {
                     if (targetPiece.isWhite() == isWhite) {
                         continue;
                     }
                 }
-
+                // add the position to the possible moves as it is valid
                 possibleMoves.add(new int[] { newX, newY });
-
             }
         }
-
-        // Castling
+        // puts the whole board into an array list
         ArrayList<ArrayList<Piece>> board = ChessGame.board.getPieces();
-        // Insert logic here
+        // Castling logic
+        // checks if it is white
         if (isWhite) {
             if (ChessGame.board.getWhiteCanCastle()[0]) {
                 if (board.get(1).get(7) == null && board.get(2).get(7) == null && board.get(3).get(7) == null) {
@@ -76,26 +75,29 @@ public class King extends Piece {
 
         return possibleMoves;
     }
-
+    // will get the kill moves of the king
     public static ArrayList<int[]> getKillMoves(int x, int y) {
+        // creates new kill moves array list
         ArrayList<int[]> killMoves = new ArrayList<>();
         // Define the eight possible directions the King can move
         int[][] directions = {
                 { -1, -1 }, { -1, 0 }, { -1, 1 },
-                { 0, -1 }, /* [x, y] */ { 0, 1 },
+                { 0, -1 }, { 0, 1 },
                 { 1, -1 }, { 1, 0 }, { 1, 1 }
         };
-
         // Check each direction for possible moves
         for (int[] direction : directions) {
+            // checks the x moves in the 2d array with their current position
             int newX = x + direction[0];
+            // checks the y moves in the 2d array with their current position
             int newY = y + direction[1];
+            // adds the new move in the array list
             killMoves.add(new int[] { newX, newY });
         }
-
+        // returns the array list
         return killMoves;
     }
-
+    // to string method
     @Override
     public String toString() {
         return "King [isWhite=" + isWhite + "]";

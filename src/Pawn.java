@@ -1,47 +1,57 @@
 import java.util.ArrayList;
 
 public class Pawn extends Piece {
-
+    // stores the iswhite variable
     public Pawn(boolean isWhite) {
+        // stores it for the pawn object
         this.isWhite = isWhite;
-        filePrefix = "p"; // File prefix for image file name
+        // file prefix for image file name 
+        filePrefix = "p"; 
     }
-
+    // overides the abstract method
     @Override
     public ArrayList<int[]> getPossibleMoves(int x, int y) {
+        // creates an array list of all the possible moves
         ArrayList<int[]> possibleMoves = new ArrayList<>();
-
         // Define the pawn's move directions based on its color
         int moveDirection = isWhite ? -1 : 1;
-
-        // Check if the square directly in front of the pawn is empty
+        // stores the x cord
         int newX = x;
+        // adds the direction the the y cord
         int newY = y + moveDirection;
+        // Check if the square directly in front of the pawn is empty
         if (isValidPosition(newX, newY) && ChessGame.board.getPieces().get(newX).get(newY) == null) {
+            // adds to possible moves
             possibleMoves.add(new int[] { newX, newY });
-
             // If pawn is on its starting position, check if it can move two squares forward
             if ((isWhite && y == 6) || (!isWhite && y == 1)) {
                 newY = y + 2 * moveDirection;
+                // checks if the square is empty
                 if (ChessGame.board.getPieces().get(newX).get(newY) == null) {
+                    // adds to the possible moves
                     possibleMoves.add(new int[] { newX, newY });
                 }
             }
         }
-
         // Check diagonal captures
         int[] captureOffsets = { -1, 1 };
+        // goes through the array 
         for (int offset : captureOffsets) {
+            // adds the offset to the x cord
             newX = x + offset;
+            // adds the direction to the y cord
             newY = y + moveDirection;
+            // checks if the position is valid
             if (isValidPosition(newX, newY)) {
+                // gets the piece with the new cords
                 Piece targetPiece = ChessGame.board.getPieces().get(newX).get(newY);
+                // Check if the new position is occupied by an opponent's piece
                 if (targetPiece != null && targetPiece.isWhite() != isWhite) {
+                    // adds to the possible moves
                     possibleMoves.add(new int[] { newX, newY });
                 }
             }
         }
-
         // Check for en passant
         if (ChessGame.board.getEnPassant() != null) {
             newX = ChessGame.board.getEnPassant()[0];
@@ -52,10 +62,10 @@ public class Pawn extends Piece {
                 }
             }
         }
-
+        // returns the possible moves
         return possibleMoves;
     }
-
+    // to string method
     @Override
     public String toString() {
         return "Pawn [isWhite=" + isWhite + "]";

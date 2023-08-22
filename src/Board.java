@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
-// add test commit
-
 public class Board {
     private ArrayList<ArrayList<Piece>> pieces = new ArrayList<>(); // Array List
     private ArrayList<int[]> highlighted = new ArrayList<>(); // Array list
