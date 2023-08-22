@@ -18,29 +18,31 @@ public class ChessBoardPanel extends javax.swing.JPanel {
         width = getWidth();
         height = getHeight() - (2 * PADDING);
 
-        // set the color to a low intensity green
-        g.setColor(new Color(84, 150, 84 ));
-
         int boardWidth = Board.getWidth();
         int boardHeight = Board.getHeight();
 
-        // create the dark squares
-        for (int i = 0; i < boardWidth; i += 2) {
-            for (int j = 1; j < boardHeight; j += 2) {
-                g.fillRect(i * width / boardWidth, (j * height / boardHeight) + PADDING, width / boardWidth, height / boardHeight);
-            }
-        }
+        // create the board with alternating colors: 
+        // set the color to a low intensity green g.setColor(new Color(84, 150, 84 ));
+        // set the color to a medium intensity bage g.setColor(new Color(227, 213, 184));
+        
+        for (int i = 0; i < boardWidth; i++) {
+            for (int j = 0; j < boardHeight; j++) {
 
-        for (int i = 1; i < boardWidth; i += 2) {
-            for (int j = 0; j < boardHeight; j += 2) {
-                g.fillRect(i * width / boardWidth, (j * height / boardHeight) + PADDING, width / boardWidth, height / boardHeight);
+                if ((i + j) % 2 == 0) {
+                    g.setColor(new Color(84, 150, 84 ));
+                } else {
+                    g.setColor(new Color(227, 213, 184));
+                }
+
+                g.fillRect(i * width / boardWidth, (j * height / boardHeight) + PADDING, width / boardWidth,
+                        (height / boardHeight) + 1);
             }
         }
 
         // display the highlighted squares
         g.setColor(new Color(255, 255, 0, 128));
         for (int[] square : ChessGame.board.getHighlighted()) {
-            g.fillRect(square[0] * width / 8, (square[1] * height / 8) + PADDING, width / 8, height / 8);
+            g.fillRect(square[0] * width / 8, (square[1] * height / 8) + PADDING, width / 8, (height / 8) + 1);
         }
 
         // display the pieces

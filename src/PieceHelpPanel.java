@@ -53,7 +53,7 @@ public class PieceHelpPanel extends javax.swing.JPanel {
         jTextArea4.setColumns(20);
         jTextArea4.setLineWrap(true);
         jTextArea4.setRows(5);
-        jTextArea4.setText("The Knight moves in 4 directions,vertically or horizontaly. It moved in an L-Shape, such that it moves 3 squares forward and 1 square towards the left of where it has moved.");
+        jTextArea4.setText("The Knight moves in 4 directions,\nvertically or horizontaly. It moved in an \nL-Shape, such that it moves 3 squares\nforward and 1 square towards the left of \nwhere it has moved.");
         jTextArea4.setWrapStyleWord(true);
         jScrollPane4.setViewportView(jTextArea4);
 
@@ -65,7 +65,7 @@ public class PieceHelpPanel extends javax.swing.JPanel {
         jTextArea5.setColumns(20);
         jTextArea5.setLineWrap(true);
         jTextArea5.setRows(5);
-        jTextArea5.setText("The Rook can move horizontaly or vertically, and is not bound by square distance. ");
+        jTextArea5.setText("The Rook can move horizontaly or \nvertically, and is not bound by square\ndistance. ");
         jTextArea5.setWrapStyleWord(true);
         jScrollPane5.setViewportView(jTextArea5);
 
@@ -77,7 +77,7 @@ public class PieceHelpPanel extends javax.swing.JPanel {
         jTextArea6.setColumns(20);
         jTextArea6.setLineWrap(true);
         jTextArea6.setRows(5);
-        jTextArea6.setText("The pawn can move 2 squares initially, then only 1 square throguhout the rest of the game. Pawns are also only limited to moving forward, only being able to split directions after taking another piece, which they can only do if the other piece is in front of them diagonally. The pawn can also reach the opposite end of the chess board to then upgrade to any other piece.");
+        jTextArea6.setText("The pawn can move 2 squares initially, \nthen only 1 square throguhout the \nrest of the game. Pawns are also only \nlimited to moving forward, only being \nable to split directions after taking \nanother piece, which they can only do \nif the other piece is in front of them \ndiagonally. The pawn can also reach the \nopposite end of the chess board to then \nupgrade to any other piece.\n");
         jTextArea6.setWrapStyleWord(true);
         jScrollPane6.setViewportView(jTextArea6);
 
@@ -89,7 +89,7 @@ public class PieceHelpPanel extends javax.swing.JPanel {
         jTextArea1.setColumns(20);
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
-        jTextArea1.setText("Once the King is elimated, the game ends.The king can only move one square in any direction. ");
+        jTextArea1.setText("Once the King is elimated, the game ends.\nThe king can only move one square in any\ndirection. ");
         jTextArea1.setWrapStyleWord(true);
         jScrollPane1.setViewportView(jTextArea1);
 
@@ -101,7 +101,7 @@ public class PieceHelpPanel extends javax.swing.JPanel {
         jTextArea2.setColumns(20);
         jTextArea2.setLineWrap(true);
         jTextArea2.setRows(5);
-        jTextArea2.setText("The Queen is a powerful sole chess piece that can move in any direction, and is not bound by square distance(It can move as far as it wants, only limited if another piece is in the way).");
+        jTextArea2.setText("The Queen is a powerful sole chess piece\nthat can move in any direction, and is \nnot bound by square distance(It can \nmove as far as it wants, only limited if \nanother piece is in the way).");
         jTextArea2.setWrapStyleWord(true);
         jScrollPane2.setViewportView(jTextArea2);
 
@@ -113,7 +113,7 @@ public class PieceHelpPanel extends javax.swing.JPanel {
         jTextArea3.setColumns(20);
         jTextArea3.setLineWrap(true);
         jTextArea3.setRows(5);
-        jTextArea3.setText("The Bishop can move diagonally and is not bound by square distance.");
+        jTextArea3.setText("The Bishop can move diagonally and is \nnot bound by square distance.");
         jTextArea3.setWrapStyleWord(true);
         jScrollPane3.setViewportView(jTextArea3);
 
@@ -203,7 +203,7 @@ public class PieceHelpPanel extends javax.swing.JPanel {
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addContainerGap(205, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

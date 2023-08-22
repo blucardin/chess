@@ -25,14 +25,14 @@ public class StartPane1 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         btnStartGame = new javax.swing.JButton();
         btnHelp = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/chessMenu.png"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, -1));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/chessMenu.png"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, -1));
 
         btnStartGame.setText("Start Game");
         btnStartGame.addActionListener(new java.awt.event.ActionListener() {
@@ -40,7 +40,7 @@ public class StartPane1 extends javax.swing.JPanel {
                 btnStartGameActionPerformed(evt);
             }
         });
-        add(btnStartGame, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 160, 80));
+        add(btnStartGame, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 390, 160, 80));
 
         btnHelp.setText("jButton1");
         btnHelp.addActionListener(new java.awt.event.ActionListener() {
@@ -48,7 +48,7 @@ public class StartPane1 extends javax.swing.JPanel {
                 btnHelpActionPerformed(evt);
             }
         });
-        add(btnHelp, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, 120, 70));
+        add(btnHelp, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 480, 120, 70));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnStartGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartGameActionPerformed
@@ -64,6 +64,6 @@ public class StartPane1 extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHelp;
     private javax.swing.JButton btnStartGame;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

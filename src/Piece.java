@@ -13,7 +13,7 @@ abstract class Piece {
     // define a getImage function
     public Image getImage() {
 
-        return new ImageIcon("images/" + getFileString() + ".png").getImage();
+        return new ImageIcon("src/images/" + getFileString() + ".png").getImage();
     }
 
     @Override

@@ -10,6 +10,15 @@ public class Board {
     private ArrayList<ArrayList<Piece>> pieces = new ArrayList<>(); // Array List
     private ArrayList<int[]> highlighted = new ArrayList<>(); // Array list
 
+    private ArrayList<ArrayList<Piece>> takenPieces = new ArrayList<>();
+
+    {
+        for (int i = 0; i < 2; i++) {
+            ArrayList<Piece> row = new ArrayList<>();
+            takenPieces.add(row);
+        }
+    }
+
     private boolean whiteTurn = true;
     private int[] selectedPiece = null;
     private int[] promotion, enPassant;
@@ -139,6 +148,18 @@ public class Board {
         return false;
     }
 
+    public void addTakenPiece(Piece piece, boolean isWhite) {
+        if (isWhite) {
+            takenPieces.get(0).add(piece);
+        } else {
+            takenPieces.get(1).add(piece);
+        }
+    }
+
+    public ArrayList<ArrayList<Piece>> getTakenPieces() {
+        return takenPieces;
+    }
+
     public int[] getPromotion() {
         return promotion;
     }
@@ -259,8 +280,12 @@ public class Board {
     }
 
     public void movePiece(int x, int y, int newX, int newY) {
+        Piece pastPiece = pieces.get(newX).get(newY);
         pieces.get(newX).set(newY, ChessGame.board.getPieces().get(x).get(y));
         pieces.get(x).set(y, null);
+        if (pastPiece != null) {
+            addTakenPiece(pastPiece, pastPiece.isWhite());
+        }
     }
 
     public void movePiece(int x, int y, int newX, int newY, Piece fillPiece) {

@@ -15,7 +15,7 @@ public class ChessGame extends JFrame {
         // Create the JFrame
         super("Chess Game");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(600, 600);
+        setSize(600, 700);
         setResizable(false);
 
         // Initialize the CardLayout and the cardPanel to hold the two panels
