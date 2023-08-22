@@ -22,6 +22,7 @@ public class Board {
     private boolean whiteTurn = true;
     private int[] selectedPiece = null;
     private int[] promotion, enPassant;
+    private boolean paused = false;
 
     private boolean[] whiteCanCastle = {true, true}, blackCanCastle = {true, true};
 
@@ -146,6 +147,14 @@ public class Board {
             }
         }
         return false;
+    }
+
+    public boolean getPaused(){
+        return paused;
+    }
+
+    public void flipPaused(){
+        paused = !paused;
     }
 
     public void addTakenPiece(Piece piece, boolean isWhite) {
