@@ -256,6 +256,23 @@ public class ChessBoardPanel extends javax.swing.JPanel {
 
                 // redraw the board
                 repaint();
+                
+                // if the turn is black
+                if (!ChessGame.board.isWhiteTurn()) {
+                    int[] bestMove = new chessBot(ChessGame.board).getBestMove();
+                    ChessGame.board.movePiece(bestMove[0], bestMove[1], bestMove[2], bestMove[3]);
+                    if (!ChessGame.board.canAMoveBeMade()) {
+                        if (ChessGame.board.checkForCheck()) {
+                            ChessGame.board.setEnding("Checkmate " + (ChessGame.board.isWhiteTurn() ? "Black" : "White") + " wins");
+                        } else {
+                            ChessGame.board.setEnding("Stalemate");
+                        }
+                    }
+                                
+                    ChessGame.board.changeTurn();
+                }
+
+                repaint();
 
             }
         });

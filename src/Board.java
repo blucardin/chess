@@ -46,6 +46,25 @@ public class Board {
         }
     }
 
+    public Board(Board board){
+        for (int i = 0; i < Board.getHeight(); i++) {
+            ArrayList<Piece> row = new ArrayList<>();
+            for (int j = 0; j < Board.getWidth(); j++) {
+                row.add(board.getPieces().get(i).get(j));
+            }
+            this.pieces.add(row);
+        }
+        this.whiteTurn = board.isWhiteTurn();
+        this.selectedPiece = board.getSelectedPiece();
+        this.promotion = board.getPromotion();
+        this.enPassant = board.getEnPassant();
+        this.whiteCanCastle = board.getWhiteCanCastle();
+        this.blackCanCastle = board.getBlackCanCastle();
+        this.ending = board.getEnding();
+        this.highlighted = board.getHighlighted();
+        this.takenPieces = board.getTakenPieces();
+    }
+
     // constructor for loading a board from a file
     public Board(String fileName) {
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
