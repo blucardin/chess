@@ -4,17 +4,22 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class ChessBoardPanel extends javax.swing.JPanel {
+    
+    final int PADDING = 50; 
+
+    static int width, height; // width and height of the window
+
     // Override the paintComponent method for custom drawing
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-
+        
         // Get the current width and height of the window
-        int width = getWidth();
-        int height = getHeight();
+        width = getWidth();
+        height = getHeight() - (2 * PADDING);
 
         // set the color to a low intensity green
-        g.setColor(new Color(0, 128, 0));
+        g.setColor(new Color(84, 150, 84 ));
 
         int boardWidth = Board.getWidth();
         int boardHeight = Board.getHeight();
@@ -22,27 +27,27 @@ public class ChessBoardPanel extends javax.swing.JPanel {
         // create the dark squares
         for (int i = 0; i < boardWidth; i += 2) {
             for (int j = 1; j < boardHeight; j += 2) {
-                g.fillRect(i * width / boardWidth, j * height / boardHeight, width / boardWidth, height / boardHeight);
+                g.fillRect(i * width / boardWidth, (j * height / boardHeight) + PADDING, width / boardWidth, height / boardHeight);
             }
         }
 
         for (int i = 1; i < boardWidth; i += 2) {
             for (int j = 0; j < boardHeight; j += 2) {
-                g.fillRect(i * width / boardWidth, j * height / boardHeight, width / boardWidth, height / boardHeight);
+                g.fillRect(i * width / boardWidth, (j * height / boardHeight) + PADDING, width / boardWidth, height / boardHeight);
             }
         }
 
         // display the highlighted squares
         g.setColor(new Color(255, 255, 0, 128));
         for (int[] square : ChessGame.board.getHighlighted()) {
-            g.fillRect(square[0] * width / 8, square[1] * height / 8, width / 8, height / 8);
+            g.fillRect(square[0] * width / 8, (square[1] * height / 8) + PADDING, width / 8, height / 8);
         }
 
         // display the pieces
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 if (ChessGame.board.getPieces().get(i).get(j) != null) {
-                    g.drawImage(ChessGame.board.getPieces().get(i).get(j).getImage(), i * width / 8, j * height / 8,
+                    g.drawImage(ChessGame.board.getPieces().get(i).get(j).getImage(), i * width / 8, (j * height / 8) + PADDING,
                             width / 8, height / 8, null);
                 }
             }
@@ -71,13 +76,24 @@ public class ChessBoardPanel extends javax.swing.JPanel {
 
             // draw a box around the options
             g.setColor(new Color(255, 255, 255));
-            g.fillRect(width / 2 - width / 8, height / 2, width / 4 , height / 4);
+            g.fillRect(width / 2 - width / 8, (height / 2) + PADDING, width / 4 , height / 4);
 
-            g.drawImage(new Queen(color).getImage(), width / 2 - width / 8, height / 2, width / 8, height / 8, null);
-            g.drawImage(new Rook(color).getImage(), width / 2, height / 2, width / 8, height / 8, null);
-            g.drawImage(new Bishop(color).getImage(), width / 2 - width / 8, height / 2 + height / 8, width / 8, height / 8, null);
-            g.drawImage(new Knight(color).getImage(), width / 2, height / 2 + height / 8, width / 8, height / 8, null);
+            g.drawImage(new Queen(color).getImage(), width / 2 - width / 8, (height / 2) + PADDING, width / 8, height / 8, null);
+            g.drawImage(new Rook(color).getImage(), width / 2, (height / 2) + PADDING, width / 8, height / 8, null);
+            g.drawImage(new Bishop(color).getImage(), width / 2 - width / 8, (height / 2 + height / 8) + PADDING, width / 8, height / 8, null);
+            g.drawImage(new Knight(color).getImage(), width / 2, (height / 2 + height / 8) + PADDING, width / 8, height / 8, null);
         }
+
+        int tankenImageWidth = (int) ((double) PADDING / 1.5);
+        // draw the taken pieces on the side of the board above and below the board
+        for (int i = 0; i < ChessGame.board.getTakenPieces().get(0).size(); i++) {
+            g.drawImage(ChessGame.board.getTakenPieces().get(0).get(i).getImage(), i * tankenImageWidth, 0, tankenImageWidth, tankenImageWidth, null);
+        }
+
+        for (int i = 0; i < ChessGame.board.getTakenPieces().get(1).size(); i++) {
+            g.drawImage(ChessGame.board.getTakenPieces().get(1).get(i).getImage(), i * tankenImageWidth, height + PADDING, tankenImageWidth, tankenImageWidth, null);
+        }
+
 
     }
 
@@ -87,10 +103,7 @@ public class ChessBoardPanel extends javax.swing.JPanel {
             public void mousePressed(MouseEvent e) {
                 // This method will be called when the canvas is clicked
                 int mouseX = e.getX(); // X-coordinate of the mouse click
-                int mouseY = e.getY(); // Y-coordinate of the mouse click
-
-                int width = getWidth();
-                int height = getHeight();
+                int mouseY = e.getY() - PADDING; // Y-coordinate of the mouse click
 
                 int boardWidth = Board.getWidth();
                 int boardHeight = Board.getHeight();
