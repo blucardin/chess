@@ -83,12 +83,10 @@ public class ChessBoardPanel extends javax.swing.JPanel {
             g.setColor(new Color(255, 255, 255));
             g.fillRect(width / 2 - width / 8, (height / 2) + PADDING, width / 4 , height / 8);
 
-
             g.setColor(new Color(0, 0, 0));
             g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
             // put the text in the middle of the button
-            g.drawString("Main Menu", width / 2 - width / 8 + (width / 4 - g.getFontMetrics().stringWidth("Return to Main Menu")) / 2, (height / 2) + PADDING + (height / 8) / 2 + 5);
-
+            g.drawString("Main Menu", width / 2 - width / 8 + (width / 4 - g.getFontMetrics().stringWidth("Main Menu")) / 2, (height / 2) + PADDING + (height / 8) / 2 + 5);            
             return; 
         }
 
@@ -135,12 +133,15 @@ public class ChessBoardPanel extends javax.swing.JPanel {
             // save game button
             g.setColor(new Color(255, 255, 255));
             g.fillRect(width / 2 - width / 8, (height / 2) + PADDING, width / 4 , height / 8);
-
+            g.fillRect(width / 2 - width / 8, (height / 2) + PADDING + 2 * (height / 8), width / 4 , height / 8);
+            
 
             g.setColor(new Color(0, 0, 0));
             g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
             // put the text in the middle of the button
             g.drawString("Save Game", width / 2 - width / 8 + (width / 4 - g.getFontMetrics().stringWidth("Save Game")) / 2, (height / 2) + PADDING + (height / 8) / 2 + 5);            
+            g.drawString("Exit", width / 2 - width / 8 + (width / 4 - g.getFontMetrics().stringWidth("Exit")) / 2, (height / 2) + PADDING + 2 * (height / 8) + (height / 8) / 2 + 5);
+
             return; 
         } else {
             g.drawImage(new ImageIcon("src/images/pauseButton.png").getImage(), width - PADDING, 0, PADDING, PADDING, null);
@@ -196,10 +197,22 @@ public class ChessBoardPanel extends javax.swing.JPanel {
                 
                 // if the save game button is clicked, save the game
                 if (ChessGame.board.getPaused()) {
-                    if (x >= 3 && x <= 4 && y >= 4 && y <= 5) {
+                    System.out.println(x + "  " + y);
+                    if ((x == 3 && y == 4) || (x == 4 && y == 4)) {
                         ChessGame.board.saveGame();
                         ChessGame.board.setEnding("Game saved");
+                        ChessGame.board.flipPaused();
+                        repaint();
+                        
                     }
+
+                    else if ((x == 3 && y == 6) || (x == 4 && y == 6)) {
+                        System.out.println("exit");
+                        ChessGame.cardLayout.show(ChessGame.cardPanel, "StartPanel");
+                    }
+                    
+                    return; 
+
                 }
 
                 if (x < 0 || x > 7 || y < 0 || y > 7) {

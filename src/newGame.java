@@ -56,7 +56,7 @@ public class newGame extends javax.swing.JPanel {
 
         jLabel2.setText("Or create a new game");
 
-        jLabel3.setText("Click on saved game to resume");
+        jLabel3.setText("Double click on saved game to resume");
 
         btnRefresh.setText("Click to Refresh");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
@@ -133,6 +133,10 @@ public class newGame extends javax.swing.JPanel {
             String selectedGame = jList1.getSelectedValue();
             if (selectedGame != null) {
                 ChessGame.board = new Board("src/savedGames/" + selectedGame);
+                // delete the file 
+                File file = new File("src/savedGames/" + selectedGame);
+                file.delete();
+                
                 ChessGame.cardLayout.show(ChessGame.cardPanel, "ChessBoardPanel");
             }
         }
