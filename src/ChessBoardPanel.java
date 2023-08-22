@@ -75,7 +75,20 @@ public class ChessBoardPanel extends javax.swing.JPanel {
             g.fillRect(0, 0, getWidth(), getHeight());
             g.setColor(new Color(255, 255, 255));
             g.setFont(new Font("TimesRoman", Font.PLAIN, 50));
-            g.drawString(ChessGame.board.getEnding(), width / 2 - 100, height / 2);
+            // center the text
+            g.drawString(ChessGame.board.getEnding(), width / 2 - g.getFontMetrics().stringWidth(ChessGame.board.getEnding()) / 2, height / 2);
+
+            // return to the main menu button
+                        // save game button
+            g.setColor(new Color(255, 255, 255));
+            g.fillRect(width / 2 - width / 8, (height / 2) + PADDING, width / 4 , height / 8);
+
+
+            g.setColor(new Color(0, 0, 0));
+            g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
+            // put the text in the middle of the button
+            g.drawString("Main Menu", width / 2 - width / 8 + (width / 4 - g.getFontMetrics().stringWidth("Return to Main Menu")) / 2, (height / 2) + PADDING + (height / 8) / 2 + 5);
+
             return; 
         }
 
@@ -117,15 +130,17 @@ public class ChessBoardPanel extends javax.swing.JPanel {
 
             g.setColor(new Color(255, 255, 255));
             g.setFont(new Font("TimesRoman", Font.PLAIN, 50));
-            g.drawString("PAUSED", width / 2 - 100, height / 2 - 100);
+            g.drawString("PAUSED", width / 2 - 100, height / 2);
 
             // save game button
             g.setColor(new Color(255, 255, 255));
-            g.fillRect(width / 2 - width / 8, (height / 2) + PADDING, width / 4 , height / 4);
+            g.fillRect(width / 2 - width / 8, (height / 2) + PADDING, width / 4 , height / 8);
+
+
             g.setColor(new Color(0, 0, 0));
             g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
-            g.drawString("Save Game", width / 2 - width / 8 + 10, (height / 2) + PADDING + 20);
-
+            // put the text in the middle of the button
+            g.drawString("Save Game", width / 2 - width / 8 + (width / 4 - g.getFontMetrics().stringWidth("Save Game")) / 2, (height / 2) + PADDING + (height / 8) / 2 + 5);            
             return; 
         } else {
             g.drawImage(new ImageIcon("src/images/pauseButton.png").getImage(), width - PADDING, 0, PADDING, PADDING, null);
@@ -170,6 +185,21 @@ public class ChessBoardPanel extends javax.swing.JPanel {
                     }
                     repaint();
                     return;
+                }
+
+                // if the ending is set and the return to main menu button is clicked, return to the main menu
+                if (!ChessGame.board.getEnding().equals("")){
+                    if (x >= 3 && x <= 4 && y >= 4 && y <= 5) {
+                        ChessGame.cardLayout.show(ChessGame.cardPanel, "StartPanel");
+                    }
+                }
+                
+                // if the save game button is clicked, save the game
+                if (ChessGame.board.getPaused()) {
+                    if (x >= 3 && x <= 4 && y >= 4 && y <= 5) {
+                        ChessGame.board.saveGame();
+                        ChessGame.board.setEnding("Game saved");
+                    }
                 }
 
                 if (x < 0 || x > 7 || y < 0 || y > 7) {
