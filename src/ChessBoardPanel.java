@@ -156,7 +156,7 @@ public class ChessBoardPanel extends javax.swing.JPanel {
                 int mouseX = e.getX(); // X-coordinate of the mouse click
                 int mouseY = e.getY() - PADDING; // Y-coordinate of the mouse click
                 // checks if mouse is outside
-                if (mouseX > width - PADDING && mouseY < PADDING) {
+                if (mouseX > width - PADDING && mouseY < 0) {
                     ChessGame.board.flipPaused(); // if the pause button is clicked, flip the paused boolean
                     repaint();
                     return;
