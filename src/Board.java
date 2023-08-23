@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
+// board class
 public class Board {
 
     // array list for the pieces

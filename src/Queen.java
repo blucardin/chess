@@ -7,6 +7,7 @@
  */
 import java.util.ArrayList;
 
+// queen class which extends the piece abstract class
 public class Queen extends Piece {
 
     // stores the iswhite variable

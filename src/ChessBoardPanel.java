@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+// chess board panel which shows board
 public class ChessBoardPanel extends javax.swing.JPanel {
 
     // adds padding int
@@ -144,7 +145,7 @@ public class ChessBoardPanel extends javax.swing.JPanel {
         }
 
     }
-
+    // paints the board
     public ChessBoardPanel() {
         // listens to the mouse
         addMouseListener(new MouseAdapter() {
@@ -273,7 +274,7 @@ public class ChessBoardPanel extends javax.swing.JPanel {
             }
         });
     }
-
+    // tries to move the piece depending on mouse click
     public void tryToMovePiece(int[] selectedPiece, int x, int y) {
         // sets valid move to false
         boolean validMove = false;

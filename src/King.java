@@ -6,7 +6,7 @@
  * King piece
  */
 import java.util.ArrayList;
-
+// king piece which extends the piece abstract class
 public class King extends Piece {
 
     // stores the iswhite variable

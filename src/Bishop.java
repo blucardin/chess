@@ -7,7 +7,7 @@
  */
 
 import java.util.ArrayList;
-
+// bishop class which is a piece
 public class Bishop extends Piece {
 
     // stores the iswhite variable

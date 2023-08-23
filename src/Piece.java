@@ -8,7 +8,7 @@
 import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
-
+// abstract class which serves for all pieces
 abstract class Piece {
 
     // will store if the piece is white

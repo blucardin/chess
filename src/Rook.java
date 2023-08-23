@@ -8,6 +8,7 @@
 
 import java.util.ArrayList;
 
+// rook class which extends the piece abstract class
 public class Rook extends Piece {
 
     // stores the iswhite variable

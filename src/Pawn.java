@@ -6,7 +6,7 @@
  * Front screen of saved games or new game
  */
 import java.util.ArrayList;
-
+// pawn class which extends the piece abstract class
 public class Pawn extends Piece {
 
     // stores the iswhite variable

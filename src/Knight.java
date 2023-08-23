@@ -7,7 +7,7 @@
  */
 
 import java.util.ArrayList;
-
+// knight piece class which extends the piece abstract method
 public class Knight extends Piece {
 
     // stores the iswhite variable

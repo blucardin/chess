@@ -8,7 +8,7 @@
 
 import javax.swing.*;
 import java.awt.*;
-
+// chess game main which manipulates all the panels
 public class ChessGame extends JFrame {
 
     // creates variables
@@ -52,7 +52,7 @@ public class ChessGame extends JFrame {
         // Initially, show the startPane1
         cardLayout.show(cardPanel, "StartPanel");
     }
-
+    // main method
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
