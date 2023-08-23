@@ -368,6 +368,7 @@ public class ChessBoardPanel extends javax.swing.JPanel {
                     // checks if enpassant is valid at cord
                     if (x == ChessGame.board.getEnPassant()[0] && y == ChessGame.board.getEnPassant()[1]) {
                         // adds to pieces
+                        ChessGame.board.addTakenPiece(ChessGame.board.getPieces().get(x).get(selectedPiece[1]), ChessGame.board.getPieces().get(x).get(selectedPiece[1]).isWhite());
                         ChessGame.board.getPieces().get(x).set(selectedPiece[1], null);
                     }
                 }
