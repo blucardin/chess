@@ -17,6 +17,7 @@ import java.util.Arrays;
 import java.util.Date;
 
 public class Board {
+
     // array list for the pieces
     private ArrayList<ArrayList<Piece>> pieces = new ArrayList<>(); // Array List
     // array list for the highlighted
@@ -44,6 +45,7 @@ public class Board {
     private boolean[] whiteCanCastle = {true, true}, blackCanCastle = {true, true};
     // sets width and height of board as 8 as default
     private static final int WIDTH = 8, HEIGHT = 8;
+
     // board constructor
     public Board() {
         // goes through all board
@@ -59,83 +61,85 @@ public class Board {
             this.pieces.add(row);
         }
     }
+
     // constructor for loading a board from a file
     public Board(String fileName) {
-    // reads the file of games
-    try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-        String line;
-        // loop through rows of the board
-        for (int i = 0; i < HEIGHT + 2; i++) {
-            // read a line from the file
-            line = br.readLine();
-            // skip empty lines
-            if (line == null || line.equals("")) {
-                continue;
-            }
-            // split the line to get piece information
-            String[] rowPieces = line.split(" ");
-            ArrayList<Piece> row = new ArrayList<>();
-            // loop through pieces in the row
-            for (int j = 0; j < rowPieces.length; j++) {
-                Piece piece = null;
-                // check for empty cell
-                if (rowPieces[j].equals(nullString)) {
-                    // add null for an empty cell
-                    row.add(null);
+        // reads the file of games
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            // loop through rows of the board
+            for (int i = 0; i < HEIGHT + 2; i++) {
+                // read a line from the file
+                line = br.readLine();
+                // skip empty lines
+                if (line == null || line.equals("")) {
                     continue;
                 }
-                // determine the piece type based on the code
-                switch (rowPieces[j].charAt(1)) {
-                    case 'p':
-                        // create a Pawn piece
-                        piece = new Pawn(rowPieces[j].charAt(0) == 'w');
-                        break;
-                    case 'r':
-                        // create a Rook piece
-                        piece = new Rook(rowPieces[j].charAt(0) == 'w');
-                        break;
-                    case 'n':
-                        // create a Knight piece
-                        piece = new Knight(rowPieces[j].charAt(0) == 'w');
-                        break;
-                    case 'b':
-                        // create a Bishop piece
-                        piece = new Bishop(rowPieces[j].charAt(0) == 'w');
-                        break;
-                    case 'q':
-                        // create a Queen piece
-                        piece = new Queen(rowPieces[j].charAt(0) == 'w');
-                        break;
-                    case 'k':
-                        // create a King piece
-                        piece = new King(rowPieces[j].charAt(0) == 'w');
-                        break;
+                // split the line to get piece information
+                String[] rowPieces = line.split(" ");
+                ArrayList<Piece> row = new ArrayList<>();
+                // loop through pieces in the row
+                for (int j = 0; j < rowPieces.length; j++) {
+                    Piece piece = null;
+                    // check for empty cell
+                    if (rowPieces[j].equals(nullString)) {
+                        // add null for an empty cell
+                        row.add(null);
+                        continue;
+                    }
+                    // determine the piece type based on the code
+                    switch (rowPieces[j].charAt(1)) {
+                        case 'p':
+                            // create a Pawn piece
+                            piece = new Pawn(rowPieces[j].charAt(0) == 'w');
+                            break;
+                        case 'r':
+                            // create a Rook piece
+                            piece = new Rook(rowPieces[j].charAt(0) == 'w');
+                            break;
+                        case 'n':
+                            // create a Knight piece
+                            piece = new Knight(rowPieces[j].charAt(0) == 'w');
+                            break;
+                        case 'b':
+                            // create a Bishop piece
+                            piece = new Bishop(rowPieces[j].charAt(0) == 'w');
+                            break;
+                        case 'q':
+                            // create a Queen piece
+                            piece = new Queen(rowPieces[j].charAt(0) == 'w');
+                            break;
+                        case 'k':
+                            // create a King piece
+                            piece = new King(rowPieces[j].charAt(0) == 'w');
+                            break;
+                    }
+                    // add the created piece to the row
+                    row.add(piece);
                 }
-                // add the created piece to the row
-                row.add(piece);
+                // add row to pieces or takenPieces based on row index
+                if (i < HEIGHT) {
+                    // add row to the board layout
+                    this.pieces.add(row);
+                } else {
+                    // add row to takenPieces for captured pieces
+                    takenPieces.get(i - HEIGHT).addAll(row);
+                }
             }
-            // add row to pieces or takenPieces based on row index
-            if (i < HEIGHT) {
-                // add row to the board layout
-                this.pieces.add(row);
+            // read and set the current player's turn
+            line = br.readLine();
+            // set the turn based on the read line
+            if (line.equals("w")) {
+                whiteTurn = true;
             } else {
-                // add row to takenPieces for captured pieces
-                takenPieces.get(i - HEIGHT).addAll(row);
+                whiteTurn = false;
             }
+        } catch (IOException e) {
+            // handle file not found error
+            System.out.println("Error: file not found");
         }
-        // read and set the current player's turn
-        line = br.readLine();
-        // set the turn based on the read line
-        if (line.equals("w")) {
-            whiteTurn = true;
-        } else {
-            whiteTurn = false;
-        }
-    } catch (IOException e) {
-        // handle file not found error
-        System.out.println("Error: file not found");
     }
-}
+
     // checks if the current side is in check
     public boolean checkForCheck() {
         // initialize variables to hold king's position
@@ -235,7 +239,6 @@ public class Board {
             takenPieces.get(1).add(piece);
         }
     }
-
 
     // returns captured pieces
     public ArrayList<ArrayList<Piece>> getTakenPieces() {
@@ -351,10 +354,12 @@ public class Board {
     public static void initializePieces() {
 
     }
+
     // adds pieces and its coordinates
     public void addPiece(Piece piece, int x, int y) {
         pieces.get(x).set(y, piece);
     }
+
     // recmoves piece at a coordinate
     public Piece removePiece(int x, int y) {
         // gets piece from board
@@ -364,12 +369,14 @@ public class Board {
         // returns the piece
         return pastPiece;
     }
+
     // to string method
     @Override
     public String toString() {
         return "Board [pieces=" + pieces + ", highlighted=" + highlighted + ", whiteTurn=" + whiteTurn
                 + ", selectedPiece=" + Arrays.toString(selectedPiece) + "]";
     }
+
     // puts board into a string
     public String toFileString() {
         // will hold the string
@@ -411,6 +418,7 @@ public class Board {
         // return the string
         return fileString;
     }
+
     // move piece method
     public void movePiece(int x, int y, int newX, int newY) {
         // creates a temp piece
@@ -425,6 +433,7 @@ public class Board {
             addTakenPiece(pastPiece, pastPiece.isWhite());
         }
     }
+
     // move piece  method (overloaded)
     public void movePiece(int x, int y, int newX, int newY, Piece fillPiece) {
         // gets piece at index
@@ -432,17 +441,17 @@ public class Board {
         // sets to new place
         pieces.get(x).set(y, fillPiece);
     }
+
     // save game method
     public void saveGame() {
         // formats date for save
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");  
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         // gets the date
-        Date date = new Date();  
+        Date date = new Date();
         // saves the file
         String fileName = "src/savedGames/" + formatter.format(date) + ".txt";
 
         // use toFileString to save the board to a file
-
         // create a new file with the name fileName
         // write the board to the file
         // writes to file

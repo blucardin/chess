@@ -9,6 +9,7 @@
 import java.util.ArrayList;
 
 public class Rook extends Piece {
+
     // stores the iswhite variable
     public Rook(boolean isWhite) {
         // stores it for the rook object
@@ -16,6 +17,7 @@ public class Rook extends Piece {
         // file prei for image file name
         filePrefix = "r";
     }
+
     // overrides abstract method
     @Override
     public ArrayList<int[]> getPossibleMoves(int x, int y) {
@@ -26,12 +28,12 @@ public class Rook extends Piece {
             // checks if it is empty
             if (ChessGame.board.getPieces().get(i).get(y) == null) {
                 // adds to possible moves
-                possibleMoves.add(new int[] { i, y });
+                possibleMoves.add(new int[]{i, y});
             } else {
                 // checks if it is occupied
                 if (ChessGame.board.getPieces().get(i).get(y).isWhite() != isWhite) {
                     // adds to possible moves
-                    possibleMoves.add(new int[] { i, y });
+                    possibleMoves.add(new int[]{i, y});
                 }
                 // breaks loop as it can not go past the piece
                 break;
@@ -42,12 +44,12 @@ public class Rook extends Piece {
             // checks if square is empty
             if (ChessGame.board.getPieces().get(i).get(y) == null) {
                 // adds to possible moves
-                possibleMoves.add(new int[] { i, y });
+                possibleMoves.add(new int[]{i, y});
             } else {
                 // checks if it is occupied
                 if (ChessGame.board.getPieces().get(i).get(y).isWhite() != isWhite) {
-                   // adds to possible moves
-                    possibleMoves.add(new int[] { i, y });
+                    // adds to possible moves
+                    possibleMoves.add(new int[]{i, y});
                 }
                 // breaks loop as it can not go past the piece
                 break;
@@ -58,12 +60,12 @@ public class Rook extends Piece {
             // checks if it is empty
             if (ChessGame.board.getPieces().get(x).get(j) == null) {
                 // adds to possible moves
-                possibleMoves.add(new int[] { x, j });
+                possibleMoves.add(new int[]{x, j});
             } else {
                 // checks if it is occupied
                 if (ChessGame.board.getPieces().get(x).get(j).isWhite() != isWhite) {
                     // adds to possible moves
-                    possibleMoves.add(new int[] { x, j });
+                    possibleMoves.add(new int[]{x, j});
                 }
                 // breaks the loop as it cant go past the piece
                 break;
@@ -74,12 +76,12 @@ public class Rook extends Piece {
             // checks if the square is empty
             if (ChessGame.board.getPieces().get(x).get(j) == null) {
                 // adds to possible moves
-                possibleMoves.add(new int[] { x, j });
+                possibleMoves.add(new int[]{x, j});
             } else {
                 // checks if it is occupied
                 if (ChessGame.board.getPieces().get(x).get(j).isWhite() != isWhite) {
                     // adds to possible moves
-                    possibleMoves.add(new int[] { x, j });
+                    possibleMoves.add(new int[]{x, j});
                 }
                 // breaks the loop as it cant go past the piece
                 break;
@@ -88,6 +90,7 @@ public class Rook extends Piece {
         // returns the possible moves
         return possibleMoves;
     }
+
     // to string method
     @Override
     public String toString() {

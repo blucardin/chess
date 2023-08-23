@@ -8,13 +8,15 @@
 import java.util.ArrayList;
 
 public class Queen extends Piece {
+
     // stores the iswhite variable
     public Queen(boolean isWhite) {
-         // stores it for the queen object
+        // stores it for the queen object
         this.isWhite = isWhite;
         // File prefix for image file name
-        filePrefix = "q"; 
+        filePrefix = "q";
     }
+
     // overides the abstract method
     @Override
     public ArrayList<int[]> getPossibleMoves(int x, int y) {
@@ -26,12 +28,12 @@ public class Queen extends Piece {
             // makes sure square is empty
             if (ChessGame.board.getPieces().get(i).get(y) == null) {
                 // adds to possible moves
-                possibleMoves.add(new int[] { i, y });
+                possibleMoves.add(new int[]{i, y});
             } else {
                 // checks if it is occupied
                 if (ChessGame.board.getPieces().get(i).get(y).isWhite() != isWhite) {
                     // adds to possible moves
-                    possibleMoves.add(new int[] { i, y });
+                    possibleMoves.add(new int[]{i, y});
                 }
                 // breaks loop because it cant go past the piece
                 break;
@@ -42,12 +44,12 @@ public class Queen extends Piece {
             // makes sure square is empty
             if (ChessGame.board.getPieces().get(i).get(y) == null) {
                 // adds to possible moves
-                possibleMoves.add(new int[] { i, y });
+                possibleMoves.add(new int[]{i, y});
             } else {
                 // checks if it is occupied
                 if (ChessGame.board.getPieces().get(i).get(y).isWhite() != isWhite) {
                     // adds to possible moves
-                    possibleMoves.add(new int[] { i, y });
+                    possibleMoves.add(new int[]{i, y});
                 }
                 // breaks the loop because it cant go past the piece
                 break;
@@ -58,12 +60,12 @@ public class Queen extends Piece {
             // makes sure square is empty
             if (ChessGame.board.getPieces().get(x).get(j) == null) {
                 // adds to possible moves
-                possibleMoves.add(new int[] { x, j });
+                possibleMoves.add(new int[]{x, j});
             } else {
                 // checks if it is occupied
                 if (ChessGame.board.getPieces().get(x).get(j).isWhite() != isWhite) {
                     // adds to possible moves
-                    possibleMoves.add(new int[] { x, j });
+                    possibleMoves.add(new int[]{x, j});
                 }
                 // breaks the loop because it cant go past the piece
                 break;
@@ -74,12 +76,12 @@ public class Queen extends Piece {
             // makes sure square is empty
             if (ChessGame.board.getPieces().get(x).get(j) == null) {
                 // adds to possible moves
-                possibleMoves.add(new int[] { x, j });
+                possibleMoves.add(new int[]{x, j});
             } else {
                 // checks if it is occupied
                 if (ChessGame.board.getPieces().get(x).get(j).isWhite() != isWhite) {
                     // adds to possible moves
-                    possibleMoves.add(new int[] { x, j });
+                    possibleMoves.add(new int[]{x, j});
                 }
                 // breaks the loop because it cant go past the piece
                 break;
@@ -95,12 +97,12 @@ public class Queen extends Piece {
             //checks if it is empty 
             if (ChessGame.board.getPieces().get(i).get(j) == null) {
                 // adds to possible moves
-                possibleMoves.add(new int[] { i, j });
+                possibleMoves.add(new int[]{i, j});
             } else {
                 // checks if it is occupied
                 if (ChessGame.board.getPieces().get(i).get(j).isWhite() != isWhite) {
                     // adds to possible moves
-                    possibleMoves.add(new int[] { i, j });
+                    possibleMoves.add(new int[]{i, j});
                 }
                 // breaks loop because it cant go past the piece
                 break;
@@ -120,12 +122,12 @@ public class Queen extends Piece {
             //checks if it is empty 
             if (ChessGame.board.getPieces().get(i).get(j) == null) {
                 // adds to possible moves
-                possibleMoves.add(new int[] { i, j });
+                possibleMoves.add(new int[]{i, j});
             } else {
                 // checks if it is occupied
                 if (ChessGame.board.getPieces().get(i).get(j).isWhite() != isWhite) {
                     // adds to possible moves
-                    possibleMoves.add(new int[] { i, j });
+                    possibleMoves.add(new int[]{i, j});
                 }
                 // break loop as it can not go past a piece
                 break;
@@ -144,12 +146,12 @@ public class Queen extends Piece {
             // checks if it is empty
             if (ChessGame.board.getPieces().get(i).get(j) == null) {
                 // adds to possible moves
-                possibleMoves.add(new int[] { i, j });
+                possibleMoves.add(new int[]{i, j});
             } else {
                 // checks if it is occupied
                 if (ChessGame.board.getPieces().get(i).get(j).isWhite() != isWhite) {
                     // adds to to possible movies
-                    possibleMoves.add(new int[] { i, j });
+                    possibleMoves.add(new int[]{i, j});
                 }
                 // breaks loop as it can not go past the piece
                 break;
@@ -168,12 +170,12 @@ public class Queen extends Piece {
             // checks if it is empty
             if (ChessGame.board.getPieces().get(i).get(j) == null) {
                 // adds to possible moves
-                possibleMoves.add(new int[] { i, j });
+                possibleMoves.add(new int[]{i, j});
             } else {
                 // checks if it is occupied
                 if (ChessGame.board.getPieces().get(i).get(j).isWhite() != isWhite) {
                     // adds to possible moves
-                    possibleMoves.add(new int[] { i, j });
+                    possibleMoves.add(new int[]{i, j});
                 }
                 // breaks loop because can not go past piece
                 break;
@@ -185,6 +187,7 @@ public class Queen extends Piece {
         // returns the possible moves
         return possibleMoves;
     }
+
     // to string method
     @Override
     public String toString() {

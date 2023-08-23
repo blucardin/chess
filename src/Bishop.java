@@ -9,13 +9,15 @@
 import java.util.ArrayList;
 
 public class Bishop extends Piece {
+
     // stores the iswhite variable
     public Bishop(boolean isWhite) {
         // stores it for the bishop object
         this.isWhite = isWhite;
         // file prefix for image file name 
-        filePrefix = "b"; 
+        filePrefix = "b";
     }
+
     // overides the abstract method
     @Override
     public ArrayList<int[]> getPossibleMoves(int x, int y) {
@@ -23,8 +25,8 @@ public class Bishop extends Piece {
         ArrayList<int[]> possibleMoves = new ArrayList<>();
         // Define the four diagonal directions the Bishop can move
         int[][] diagonalDirections = {
-                { -1, -1 }, { -1, 1 },
-                { 1, -1 }, { 1, 1 }
+            {-1, -1}, {-1, 1},
+            {1, -1}, {1, 1}
         };
         // Check each diagonal direction for possible moves
         for (int[] direction : diagonalDirections) {
@@ -39,15 +41,15 @@ public class Bishop extends Piece {
                 // Check if the new position is empty or occupied by an opponent's piece
                 if (targetPiece == null) {
                     // if there is no piece there, it adds to the possible moves
-                    possibleMoves.add(new int[] { newX, newY });
+                    possibleMoves.add(new int[]{newX, newY});
                 } else if (targetPiece.isWhite() != isWhite) {
                     // if the cord is  occupied by an opponent's piece, it adds to the possible moves
-                    possibleMoves.add(new int[] { newX, newY });
+                    possibleMoves.add(new int[]{newX, newY});
                     // stop in this direction if an opponent's piece is encountered
-                    break; 
+                    break;
                 } else {
                     // stop in this direction if own piece is encountered
-                    break; 
+                    break;
                 }
                 // further adds to new x cord
                 newX += direction[0];
@@ -58,6 +60,7 @@ public class Bishop extends Piece {
         // checks the possible moves it may move
         return possibleMoves;
     }
+
     // tostring method
     @Override
     public String toString() {

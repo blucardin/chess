@@ -6,11 +6,10 @@
  * Default start panel
  */
 
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-
 /**
  *
  * @author sam
@@ -61,7 +60,7 @@ public class StartPane1 extends javax.swing.JPanel {
 
     private void btnStartGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartGameActionPerformed
         // creates new game
-        ChessGame.newGame.refresh(); 
+        ChessGame.newGame.refresh();
         ChessGame.cardLayout.show(ChessGame.cardPanel, "newGame");
     }//GEN-LAST:event_btnStartGameActionPerformed
 
@@ -69,8 +68,6 @@ public class StartPane1 extends javax.swing.JPanel {
         // shows help screen panel
         ChessGame.cardLayout.show(ChessGame.cardPanel, "HelpScreenPanel");
     }//GEN-LAST:event_btnHelpActionPerformed
-
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHelp;

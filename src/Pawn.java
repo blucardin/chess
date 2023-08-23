@@ -8,13 +8,15 @@
 import java.util.ArrayList;
 
 public class Pawn extends Piece {
+
     // stores the iswhite variable
     public Pawn(boolean isWhite) {
         // stores it for the pawn object
         this.isWhite = isWhite;
         // file prefix for image file name 
-        filePrefix = "p"; 
+        filePrefix = "p";
     }
+
     // overides the abstract method
     @Override
     public ArrayList<int[]> getPossibleMoves(int x, int y) {
@@ -29,19 +31,19 @@ public class Pawn extends Piece {
         // Check if the square directly in front of the pawn is empty
         if (isValidPosition(newX, newY) && ChessGame.board.getPieces().get(newX).get(newY) == null) {
             // adds to possible moves
-            possibleMoves.add(new int[] { newX, newY });
+            possibleMoves.add(new int[]{newX, newY});
             // If pawn is on its starting position, check if it can move two squares forward
             if ((isWhite && y == 6) || (!isWhite && y == 1)) {
                 newY = y + 2 * moveDirection;
                 // checks if the square is empty
                 if (ChessGame.board.getPieces().get(newX).get(newY) == null) {
                     // adds to the possible moves
-                    possibleMoves.add(new int[] { newX, newY });
+                    possibleMoves.add(new int[]{newX, newY});
                 }
             }
         }
         // Check diagonal captures
-        int[] captureOffsets = { -1, 1 };
+        int[] captureOffsets = {-1, 1};
         // goes through the array 
         for (int offset : captureOffsets) {
             // adds the offset to the x cord
@@ -55,7 +57,7 @@ public class Pawn extends Piece {
                 // Check if the new position is occupied by an opponent's piece
                 if (targetPiece != null && targetPiece.isWhite() != isWhite) {
                     // adds to the possible moves
-                    possibleMoves.add(new int[] { newX, newY });
+                    possibleMoves.add(new int[]{newX, newY});
                 }
             }
         }
@@ -69,13 +71,14 @@ public class Pawn extends Piece {
                 // checks if temp y can move in direction
                 if (newY == y + moveDirection) {
                     // adds to possible moves
-                    possibleMoves.add(new int[] { newX, newY });
+                    possibleMoves.add(new int[]{newX, newY});
                 }
             }
         }
         // returns the possible moves
         return possibleMoves;
     }
+
     // to string method
     @Override
     public String toString() {

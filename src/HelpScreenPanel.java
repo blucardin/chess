@@ -6,11 +6,10 @@
  * Help screen
  */
 
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-
 /**
  *
  * @author sam
@@ -144,7 +143,6 @@ public class HelpScreenPanel extends javax.swing.JPanel {
     private void btnGoToHelpPiecesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoToHelpPiecesActionPerformed
         ChessGame.cardLayout.show(ChessGame.cardPanel, "PieceHelpPanel");
     }//GEN-LAST:event_btnGoToHelpPiecesActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGoToHelpPieces;

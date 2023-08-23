@@ -136,7 +136,7 @@ public class newGame extends javax.swing.JPanel {
                 // switch the card layout to the ChessBoardPanel
                 ChessGame.cardLayout.show(ChessGame.cardPanel, "ChessBoardPanel");
             }
-}
+        }
     }//GEN-LAST:event_jList1MouseClicked
 
     private void btnMainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainMenuActionPerformed
@@ -144,9 +144,8 @@ public class newGame extends javax.swing.JPanel {
         ChessGame.cardLayout.show(ChessGame.cardPanel, "StartPane1");
     }//GEN-LAST:event_btnMainMenuActionPerformed
 
-    
-    public void refresh(){
-        String savedGamesDirectory = "src/savedGames"; 
+    public void refresh() {
+        String savedGamesDirectory = "src/savedGames";
 
         // create a File object representing the directory
         File directory = new File(savedGamesDirectory);
@@ -177,7 +176,6 @@ public class newGame extends javax.swing.JPanel {
             jList1.setListData(new String[]{"Saved games directory not found"});
         }
     }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMainMenu;

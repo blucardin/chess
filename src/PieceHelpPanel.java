@@ -6,9 +6,11 @@
  * Help panel for speicifc pieces 
  */
 public class PieceHelpPanel extends javax.swing.JPanel {
+
     public PieceHelpPanel() {
         initComponents();
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -199,7 +201,6 @@ public class PieceHelpPanel extends javax.swing.JPanel {
         // shows the help screen panel 
         ChessGame.cardLayout.show(ChessGame.cardPanel, "HelpScreenPanel");
     }//GEN-LAST:event_btnBackToHelpScreenActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBackToHelpScreen;

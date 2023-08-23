@@ -10,16 +10,18 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ChessGame extends JFrame {
+
     // creates variables
     public static CardLayout cardLayout;
     public static JPanel cardPanel;
     private StartPane1 startPane1;
     private ChessBoardPanel chessBoardPanel;
-    private HelpScreenPanel helpScreenPanel; 
+    private HelpScreenPanel helpScreenPanel;
     private PieceHelpPanel pieceHelpPanel;
     public static newGame newGame = new newGame();
     // sets default board
     public static Board board = new Board("defaultBoard.txt");
+
     public ChessGame() {
         // Create the JFrame
         super("Chess Game");
@@ -34,13 +36,13 @@ public class ChessGame extends JFrame {
         // Create instances of panels
         startPane1 = new StartPane1();
         chessBoardPanel = new ChessBoardPanel();
-        helpScreenPanel = new HelpScreenPanel(); 
+        helpScreenPanel = new HelpScreenPanel();
         pieceHelpPanel = new PieceHelpPanel();
 
         // Add panels to the cardPanel
         cardPanel.add(startPane1, "StartPanel");
         cardPanel.add(chessBoardPanel, "ChessBoardPanel");
-        cardPanel.add( helpScreenPanel, "HelpScreenPanel");
+        cardPanel.add(helpScreenPanel, "HelpScreenPanel");
         cardPanel.add(pieceHelpPanel, "PieceHelpPanel");
         cardPanel.add(newGame, "newGame");
 
