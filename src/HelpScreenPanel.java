@@ -24,98 +24,74 @@ public class HelpScreenPanel extends javax.swing.JPanel {
         btnGoToHelpPieces = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(600, 600));
         setPreferredSize(new java.awt.Dimension(600, 600));
         setSize(new java.awt.Dimension(600, 600));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
-        jTextArea1.setText("In chess, there are two sides, Black and White. The main goal of the each side is to eliminate the King piece of the opposing side. \n");
+        jTextArea1.setText("Chess is a two-player strategy board game where each player commands an army of 16 pieces, including a king, queen, rooks, knights, bishops, and pawns, set on an 8x8 grid. The objective is to checkmate the opponent's king, putting it in a position where it cannot move without being captured. Chess is a game of skill, tactics, and foresight, where players must plan their moves carefully, anticipate their opponent's actions, and use their pieces' unique abilities to control the board and ultimately outmaneuver the adversary's king to secure victory.");
         jTextArea1.setWrapStyleWord(true);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(9, 38, 145));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 164, 502, 135));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(227, 213, 184));
         jLabel3.setText("Main Premise of the game:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 124, -1, -1));
 
         jTextArea2.setEditable(false);
         jTextArea2.setColumns(20);
         jTextArea2.setLineWrap(true);
         jTextArea2.setRows(5);
-        jTextArea2.setText("In chess there are a total of 6 different types of piece, those being the Pawn, Rook, Knight, Bishop, Queen and King.Each team has a total of 16 pieces, which include 8 Pawns, 2 Rooks, 2 Knights, 2 Bishops, 1 Queen, and 1 King. \n");
+        jTextArea2.setText("In chess there are a total of 6 different types of piece: Pawn, Rook, Knight, Bishop, Queen and King. Each team has a total of 16 pieces, which include 8 Pawns, 2 Rooks, 2 Knights, 2 Bishops, 1 Queen, and 1 King. \n");
         jTextArea2.setWrapStyleWord(true);
         jScrollPane2.setViewportView(jTextArea2);
 
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 500, -1));
+
+        btnMainMenu.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         btnMainMenu.setText("Back to Main Menu");
         btnMainMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMainMenuActionPerformed(evt);
             }
         });
+        add(btnMainMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 550, -1, -1));
 
+        btnGoToHelpPieces.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         btnGoToHelpPieces.setText("Click here to Know More About the Pieces!");
         btnGoToHelpPieces.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGoToHelpPiecesActionPerformed(evt);
             }
         });
+        add(btnGoToHelpPieces, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 480, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(105, 9, 145));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(84, 150, 84));
         jLabel1.setText("How to play CHESS!");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 45, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(9, 38, 145));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(227, 213, 184));
         jLabel2.setText("Pieces:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 45, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(btnMainMenu)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(107, 107, 107))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(225, 225, 225)
-                                .addComponent(btnGoToHelpPieces))
-                            .addComponent(jLabel3)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(204, 204, 204)
-                        .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(jLabel1)
-                .addGap(49, 49, 49)
-                .addComponent(jLabel3)
-                .addGap(39, 39, 39)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(88, 88, 88)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnMainMenu)
-                    .addComponent(btnGoToHelpPieces))
-                .addGap(25, 25, 25))
-        );
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/woodPattern.png"))); // NOI18N
+        jLabel5.setText("jLabel4");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, -1, 720));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/woodPattern.png"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, -1, 720));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainMenuActionPerformed
@@ -133,6 +109,8 @@ public class HelpScreenPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;

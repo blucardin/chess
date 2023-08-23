@@ -16,6 +16,7 @@ public class PieceHelpPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel8 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea4 = new javax.swing.JTextArea();
@@ -35,164 +36,126 @@ public class PieceHelpPanel extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
         btnBackToHelpScreen = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(118, 9, 240));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/woodPattern.png"))); // NOI18N
+        jLabel8.setText("jLabel4");
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(227, 213, 184));
         jLabel4.setText("Knight");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, -1));
 
         jTextArea4.setEditable(false);
         jTextArea4.setColumns(20);
         jTextArea4.setLineWrap(true);
         jTextArea4.setRows(5);
-        jTextArea4.setText("The Knight moves in 4 directions,\nvertically or horizontaly. It moved in an \nL-Shape, such that it moves 3 squares\nforward and 1 square towards the left of \nwhere it has moved.");
+        jTextArea4.setText("Knights move in an 'L' shape: two squares in one direction and one square perpendicular. They can jump over other pieces.");
         jTextArea4.setWrapStyleWord(true);
         jScrollPane4.setViewportView(jTextArea4);
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(118, 9, 240));
+        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 146, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(227, 213, 184));
         jLabel5.setText("Rook");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 280, -1, -1));
 
         jTextArea5.setEditable(false);
         jTextArea5.setColumns(20);
         jTextArea5.setLineWrap(true);
         jTextArea5.setRows(5);
-        jTextArea5.setText("The Rook can move horizontaly or \nvertically, and is not bound by square\ndistance. ");
+        jTextArea5.setText("Rooks move in straight lines, either horizontally or vertically. They're excellent for controlling columns and rows.");
         jTextArea5.setWrapStyleWord(true);
         jScrollPane5.setViewportView(jTextArea5);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(118, 9, 240));
+        add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 310, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(227, 213, 184));
         jLabel6.setText("Pawn");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 450, -1, -1));
 
         jTextArea6.setEditable(false);
         jTextArea6.setColumns(20);
         jTextArea6.setLineWrap(true);
         jTextArea6.setRows(5);
-        jTextArea6.setText("The pawn can move 2 squares initially, \nthen only 1 square throguhout the \nrest of the game. Pawns are also only \nlimited to moving forward, only being \nable to split directions after taking \nanother piece, which they can only do \nif the other piece is in front of them \ndiagonally. The pawn can also reach the \nopposite end of the chess board to then \nupgrade to any other piece.\n");
+        jTextArea6.setText("Pawns move forward one square but capture diagonally. They promote to stronger pieces if they reach the opposite end of the board.\n");
         jTextArea6.setWrapStyleWord(true);
         jScrollPane6.setViewportView(jTextArea6);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(118, 9, 240));
+        add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 480, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(227, 213, 184));
         jLabel1.setText("King");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, -1, -1));
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
-        jTextArea1.setText("Once the King is elimated, the game ends.\nThe king can only move one square in any\ndirection. ");
+        jTextArea1.setText("The King is the most crucial piece. It moves one square in any direction. Protect it at all costs!");
         jTextArea1.setWrapStyleWord(true);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(118, 9, 240));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 146, 244, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(227, 213, 184));
         jLabel2.setText("Queen");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, -1, -1));
 
         jTextArea2.setEditable(false);
         jTextArea2.setColumns(20);
         jTextArea2.setLineWrap(true);
         jTextArea2.setRows(5);
-        jTextArea2.setText("The Queen is a powerful sole chess piece\nthat can move in any direction, and is \nnot bound by square distance(It can \nmove as far as it wants, only limited if \nanother piece is in the way).");
+        jTextArea2.setText("The Queen is your most powerful piece. It can move diagonally, horizontally, or vertically, covering lots of ground.");
         jTextArea2.setWrapStyleWord(true);
         jScrollPane2.setViewportView(jTextArea2);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(118, 9, 240));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(227, 213, 184));
         jLabel3.setText("Bishop");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 450, -1, -1));
 
         jTextArea3.setEditable(false);
         jTextArea3.setColumns(20);
         jTextArea3.setLineWrap(true);
         jTextArea3.setRows(5);
-        jTextArea3.setText("The Bishop can move diagonally and is \nnot bound by square distance.");
+        jTextArea3.setText("Bishops move diagonally, covering the long diagonal paths on the board. Each player has two of them.");
         jTextArea3.setWrapStyleWord(true);
         jScrollPane3.setViewportView(jTextArea3);
 
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, -1, -1));
+
+        btnBackToHelpScreen.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         btnBackToHelpScreen.setText("Back to the help screen");
         btnBackToHelpScreen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackToHelpScreenActionPerformed(evt);
             }
         });
+        add(btnBackToHelpScreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 610, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
-                        .addComponent(jLabel3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addComponent(jLabel6))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(jLabel4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addComponent(jLabel5)))
-                .addGap(37, 37, 37))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(196, 196, 196)
-                .addComponent(btnBackToHelpScreen)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(107, 107, 107))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane3)
-                            .addComponent(jScrollPane6)))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnBackToHelpScreen)
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(84, 150, 84));
+        jLabel7.setText("Pieces");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, -1, -1));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/woodPattern.png"))); // NOI18N
+        jLabel9.setText("jLabel4");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, 720));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/woodPattern.png"))); // NOI18N
+        jLabel10.setText("jLabel4");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, -1, 720));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackToHelpScreenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackToHelpScreenActionPerformed
@@ -203,11 +166,15 @@ public class PieceHelpPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBackToHelpScreen;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
