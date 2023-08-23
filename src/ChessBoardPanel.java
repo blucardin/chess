@@ -344,17 +344,6 @@ public class ChessBoardPanel extends javax.swing.JPanel {
                     }
                 }
             }
-            // checks if move cannot move
-            if (!ChessGame.board.canAMoveBeMade()) {
-                // checks if can check
-                if (ChessGame.board.checkForCheck()) {
-                    // sets to whoever won
-                    ChessGame.board.setEnding("Checkmate " + (ChessGame.board.isWhiteTurn() ? "Black" : "White") + " wins");
-                } else {
-                    // sets to stalemate
-                    ChessGame.board.setEnding("Stalemate");
-                }
-            }
             // If a pawn reaches the end of the board, give the player the option to promote it to a queen, rook, bishop, or knight
             if (ChessGame.board.getPieces().get(x).get(y) instanceof Pawn) {
                 // if white pawn
@@ -401,6 +390,19 @@ public class ChessBoardPanel extends javax.swing.JPanel {
             ChessGame.board.changeTurn();
             ChessGame.board.clearHighlighted();
             ChessGame.board.setSelectedPiece(null);
+            
+                        // checks if move cannot move
+            if (!ChessGame.board.canAMoveBeMade()) {
+                // checks if can check
+                if (ChessGame.board.checkForCheck()) {
+                    // sets to whoever won
+                    ChessGame.board.setEnding("Checkmate " + (ChessGame.board.isWhiteTurn() ? "Black" : "White") + " wins");
+                } else {
+                    // sets to stalemate
+                    ChessGame.board.setEnding("Stalemate");
+                }
+                System.out.println("ENDED");
+            }
 
         }
     }
