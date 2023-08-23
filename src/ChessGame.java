@@ -17,7 +17,7 @@ public class ChessGame extends JFrame {
     private ChessBoardPanel chessBoardPanel;
     private HelpScreenPanel helpScreenPanel; 
     private PieceHelpPanel pieceHelpPanel;
-    public newGame newGame;
+    public static newGame newGame = new newGame();
     // sets default board
     public static Board board = new Board("defaultBoard.txt");
     public ChessGame() {
@@ -36,7 +36,6 @@ public class ChessGame extends JFrame {
         chessBoardPanel = new ChessBoardPanel();
         helpScreenPanel = new HelpScreenPanel(); 
         pieceHelpPanel = new PieceHelpPanel();
-        newGame newGame = new newGame();
 
         // Add panels to the cardPanel
         cardPanel.add(startPane1, "StartPanel");

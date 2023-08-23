@@ -61,6 +61,7 @@ public class StartPane1 extends javax.swing.JPanel {
 
     private void btnStartGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartGameActionPerformed
         // creates new game
+        ChessGame.newGame.refresh(); 
         ChessGame.cardLayout.show(ChessGame.cardPanel, "newGame");
     }//GEN-LAST:event_btnStartGameActionPerformed
 

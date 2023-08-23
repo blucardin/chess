@@ -16,8 +16,6 @@ public class newGame extends javax.swing.JPanel {
      */
     public newGame() {
         initComponents();
-
-        btnRefreshActionPerformed(null);
     }
 
     /**
@@ -35,7 +33,6 @@ public class newGame extends javax.swing.JPanel {
         jList1 = new javax.swing.JList<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        btnRefresh = new javax.swing.JButton();
         btnMainMenu = new javax.swing.JButton();
 
         jLabel1.setText("Play Game");
@@ -57,13 +54,6 @@ public class newGame extends javax.swing.JPanel {
         jLabel2.setText("Or create a new game");
 
         jLabel3.setText("Double click on saved game to resume");
-
-        btnRefresh.setText("Click to Refresh");
-        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRefreshActionPerformed(evt);
-            }
-        });
 
         btnMainMenu.setText("Back to Main Menu");
         btnMainMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -88,9 +78,7 @@ public class newGame extends javax.swing.JPanel {
                                 .addComponent(jLabel3)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnRefresh))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnMainMenu)
@@ -116,9 +104,7 @@ public class newGame extends javax.swing.JPanel {
                         .addGap(28, 28, 28)
                         .addComponent(btnNewGame)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRefresh)
-                    .addComponent(btnMainMenu))
+                .addComponent(btnMainMenu)
                 .addContainerGap(346, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -158,47 +144,44 @@ public class newGame extends javax.swing.JPanel {
         ChessGame.cardLayout.show(ChessGame.cardPanel, "StartPane1");
     }//GEN-LAST:event_btnMainMenuActionPerformed
 
-    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-        // initialize the directory path for saved games
-    String savedGamesDirectory = "src/savedGames"; 
+    
+    public void refresh(){
+        String savedGamesDirectory = "src/savedGames"; 
 
-    // create a File object representing the directory
-    File directory = new File(savedGamesDirectory);
+        // create a File object representing the directory
+        File directory = new File(savedGamesDirectory);
 
-    // check if the directory exists and is indeed a directory
-    if (directory.exists() && directory.isDirectory()) {
-        // get an array of File objects representing files in the directory
-        File[] files = directory.listFiles();
+        // check if the directory exists and is indeed a directory
+        if (directory.exists() && directory.isDirectory()) {
+            // get an array of File objects representing files in the directory
+            File[] files = directory.listFiles();
 
-        // check if files were found in the directory
-        if (files != null && files.length > 0) {
-            // create an array to store the names of the files
-            String[] fileNames = new String[files.length];
+            // check if files were found in the directory
+            if (files != null && files.length > 0) {
+                // create an array to store the names of the files
+                String[] fileNames = new String[files.length];
 
-            // iterate through the files and extract their names
-            for (int i = 0; i < files.length; i++) {
-                fileNames[i] = files[i].getName();
+                // iterate through the files and extract their names
+                for (int i = 0; i < files.length; i++) {
+                    fileNames[i] = files[i].getName();
+                }
+
+                // populate a GUI list with the file names
+                jList1.setListData(fileNames);
+            } else {
+                // if no files were found, display a message in the GUI list
+                jList1.setListData(new String[]{"No saved games found"});
             }
-
-            // populate a GUI list with the file names
-            jList1.setListData(fileNames);
         } else {
-            // if no files were found, display a message in the GUI list
-            jList1.setListData(new String[]{"No saved games found"});
+            // if the directory doesn't exist, display an error message in the GUI list
+            jList1.setListData(new String[]{"Saved games directory not found"});
         }
-    } else {
-        // if the directory doesn't exist, display an error message in the GUI list
-        jList1.setListData(new String[]{"Saved games directory not found"});
     }
-
-    }//GEN-LAST:event_btnRefreshActionPerformed
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMainMenu;
     private javax.swing.JButton btnNewGame;
-    private javax.swing.JButton btnRefresh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
