@@ -6,3 +6,6 @@ bk bp __ __ __ __ wp wk
 bb bp __ __ __ __ wp wb
 bn bp __ __ __ __ wp wn
 br bp __ __ __ __ wp wr
+
+
+w

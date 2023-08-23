@@ -1,3 +1,10 @@
+/*
+ * Noah, Harjosh, Rahul, Peter
+ * ICS4UE
+ * August 22 2023
+ * Mr Diakoloukas
+ * Front screen of saved games or new game
+ */
 import java.util.ArrayList;
 
 public class Pawn extends Piece {
@@ -54,10 +61,14 @@ public class Pawn extends Piece {
         }
         // Check for en passant
         if (ChessGame.board.getEnPassant() != null) {
+            // checks if it is valid for  and y
             newX = ChessGame.board.getEnPassant()[0];
             newY = ChessGame.board.getEnPassant()[1];
+            // checkf if new x can equal cord +- 1
             if (newX == x + 1 || newX == x - 1) {
+                // checks if temp y can move in direction
                 if (newY == y + moveDirection) {
+                    // adds to possible moves
                     possibleMoves.add(new int[] { newX, newY });
                 }
             }

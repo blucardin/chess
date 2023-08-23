@@ -1,3 +1,10 @@
+/*
+ * Noah, Harjosh, Rahul, Peter
+ * ICS4UE
+ * August 22 2023
+ * Mr Diakoloukas
+ * Queen piece w/ castling
+ */
 import java.util.ArrayList;
 
 public class Queen extends Piece {
