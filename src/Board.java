@@ -1,5 +1,5 @@
 /*
- * Noah, Harjosh, Rahul, Peter
+ * Noah, Harjosh
  * ICS4UE
  * August 22 2023
  * Mr Diakoloukas
