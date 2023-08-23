@@ -1,3 +1,11 @@
+/*
+ * Noah, Harjosh, Rahul, Peter
+ * ICS4UE
+ * August 22 2023
+ * Mr Diakoloukas
+ * Chess game graphics
+ */
+
 import java.awt.*;
 import java.util.ArrayList;
 

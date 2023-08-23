@@ -1,3 +1,11 @@
+/*
+ * Noah, Harjosh, Rahul, Peter
+ * ICS4UE
+ * August 22 2023
+ * Mr Diakoloukas
+ * Knight piece
+ */
+
 import java.util.ArrayList;
 
 public class Knight extends Piece {

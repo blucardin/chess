@@ -1,3 +1,11 @@
+/*
+ * Noah, Harjosh, Rahul, Peter
+ * ICS4UE
+ * August 22 2023
+ * Mr Diakoloukas
+ * All panels revolving the game
+ */
+
 import javax.swing.*;
 import java.awt.*;
 

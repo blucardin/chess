@@ -1,3 +1,10 @@
+/*
+ * Noah, Harjosh, Rahul, Peter
+ * ICS4UE
+ * August 22 2023
+ * Mr Diakoloukas
+ * Abstract class for all pieces
+ */
 import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;

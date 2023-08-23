@@ -1,4 +1,12 @@
 /*
+ * Noah, Harjosh, Rahul, Peter
+ * ICS4UE
+ * August 22 2023
+ * Mr Diakoloukas
+ * Default start panel
+ */
+
+/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */

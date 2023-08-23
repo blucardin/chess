@@ -1,3 +1,10 @@
+/*
+ * Noah, Harjosh, Rahul, Peter
+ * ICS4UE
+ * August 22 2023
+ * Mr Diakoloukas
+ * Help panel for speicifc pieces 
+ */
 public class PieceHelpPanel extends javax.swing.JPanel {
     public PieceHelpPanel() {
         initComponents();
