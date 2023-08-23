@@ -134,7 +134,7 @@ public class newGame extends javax.swing.JPanel {
 
     private void btnMainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainMenuActionPerformed
         // shows main menu
-        ChessGame.cardLayout.show(ChessGame.cardPanel, "StartPane1");
+        ChessGame.cardLayout.show(ChessGame.cardPanel, "StartPanel");
     }//GEN-LAST:event_btnMainMenuActionPerformed
 
     public void refresh() {
