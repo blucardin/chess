@@ -52,10 +52,12 @@ public class StartPane1 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnStartGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartGameActionPerformed
+        // creates new game
         ChessGame.cardLayout.show(ChessGame.cardPanel, "newGame");
     }//GEN-LAST:event_btnStartGameActionPerformed
 
     private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelpActionPerformed
+        // shows help screen panel
         ChessGame.cardLayout.show(ChessGame.cardPanel, "HelpScreenPanel");
     }//GEN-LAST:event_btnHelpActionPerformed
 

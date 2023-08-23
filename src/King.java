@@ -40,39 +40,54 @@ public class King extends Piece {
         // Castling logic
         // checks if it is white
         if (isWhite) {
+            // checks the castle list for left
             if (ChessGame.board.getWhiteCanCastle()[0]) {
+                // checks if the spaces are empty
                 if (board.get(1).get(7) == null && board.get(2).get(7) == null && board.get(3).get(7) == null) {
+                    // make sure it will not cause check
                     if (!ChessGame.board.willThisMoveCauseCheck(4, 7, 3, 7) && !ChessGame.board.willThisMoveCauseCheck(4, 7, 2, 7) && !ChessGame.board.willThisMoveCauseCheck(4, 7, 1, 7)) {
+                        // adds to possible move
                         possibleMoves.add(new int[]{2, 7});
                     }
                 }
             }
+            // checks the castle for right
             if (ChessGame.board.getWhiteCanCastle()[1]) {
+                // cehcks if spaces are empty
                 if (board.get(5).get(7) == null && board.get(6).get(7) == null) {
+                    // checks if it will add check
                     if (!ChessGame.board.willThisMoveCauseCheck(4, 7, 5, 7) && !ChessGame.board.willThisMoveCauseCheck(4, 7, 6, 7)) {
+                        // adds to possible moves
                         possibleMoves.add(new int[]{6, 7});
                     }
                 }
             }
         }
         else {
+            // checks if black can castle left
             if (ChessGame.board.getBlackCanCastle()[0]) {
+                // check if spaces are empty
                 if (board.get(1).get(0) == null && board.get(2).get(0) == null && board.get(3).get(0) == null) {
+                    // check if it will cause check
                     if (!ChessGame.board.willThisMoveCauseCheck(4, 0, 3, 0) && !ChessGame.board.willThisMoveCauseCheck(4, 0, 2, 0) && !ChessGame.board.willThisMoveCauseCheck(4, 0, 1, 0)) {
+                        // adds to possible moves
                         possibleMoves.add(new int[]{2, 0});
                     }
                 }
             }
+            // checks if black can castle right
             if (ChessGame.board.getBlackCanCastle()[1]) {
+                // checks if spaces are empty
                 if (board.get(5).get(0) == null && board.get(6).get(0) == null) {
+                    // check if it will cause check
                     if (!ChessGame.board.willThisMoveCauseCheck(4, 0, 5, 0) && !ChessGame.board.willThisMoveCauseCheck(4, 0, 6, 0)) {
+                       // adds to possible moves
                         possibleMoves.add(new int[]{6, 0});
                     }
                 }
             }
         }
-
-
+        // returns the possible moves
         return possibleMoves;
     }
     // will get the kill moves of the king

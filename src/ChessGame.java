@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ChessGame extends JFrame {
+    // creates variables
     public static CardLayout cardLayout;
     public static JPanel cardPanel;
     private StartPane1 startPane1;
@@ -9,9 +10,8 @@ public class ChessGame extends JFrame {
     private HelpScreenPanel helpScreenPanel; 
     private PieceHelpPanel pieceHelpPanel;
     public newGame newGame;
-
+    // sets default board
     public static Board board = new Board("defaultBoard.txt");
-
     public ChessGame() {
         // Create the JFrame
         super("Chess Game");

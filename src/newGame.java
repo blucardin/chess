@@ -124,48 +124,73 @@ public class newGame extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewGameActionPerformed
+        // creates new board
         ChessGame.board = new Board("defaultBoard.txt");
+        // shows board
         ChessGame.cardLayout.show(ChessGame.cardPanel, "ChessBoardPanel");
     }//GEN-LAST:event_btnNewGameActionPerformed
 
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
+        // check if the mouse was double-clicked
         if (evt.getClickCount() == 2) {
+            // get the name of the selected game from the GUI list
             String selectedGame = jList1.getSelectedValue();
+
+            // if a game is selected
             if (selectedGame != null) {
+                // create a new ChessGame board with the selected game's file
                 ChessGame.board = new Board("src/savedGames/" + selectedGame);
-                // delete the file 
+
+                // create a File object for the selected game's file
                 File file = new File("src/savedGames/" + selectedGame);
+
+                // delete the selected game's file
                 file.delete();
-                
+
+                // switch the card layout to the ChessBoardPanel
                 ChessGame.cardLayout.show(ChessGame.cardPanel, "ChessBoardPanel");
             }
-        }
+}
     }//GEN-LAST:event_jList1MouseClicked
 
     private void btnMainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainMenuActionPerformed
+        // shows main menu
         ChessGame.cardLayout.show(ChessGame.cardPanel, "StartPane1");
     }//GEN-LAST:event_btnMainMenuActionPerformed
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-        String savedGamesDirectory = "src/savedGames"; 
-    
-        File directory = new File(savedGamesDirectory);
-    
-        if (directory.exists() && directory.isDirectory()) {
-            File[] files = directory.listFiles();
-            if (files != null && files.length > 0) {
-                String[] fileNames = new String[files.length];
-    
-                for (int i = 0; i < files.length; i++) {
-                    fileNames[i] = files[i].getName();
-                }
-                jList1.setListData(fileNames);
-            } else {
-                jList1.setListData(new String[]{"No saved games found"});
+        // initialize the directory path for saved games
+    String savedGamesDirectory = "src/savedGames"; 
+
+    // create a File object representing the directory
+    File directory = new File(savedGamesDirectory);
+
+    // check if the directory exists and is indeed a directory
+    if (directory.exists() && directory.isDirectory()) {
+        // get an array of File objects representing files in the directory
+        File[] files = directory.listFiles();
+
+        // check if files were found in the directory
+        if (files != null && files.length > 0) {
+            // create an array to store the names of the files
+            String[] fileNames = new String[files.length];
+
+            // iterate through the files and extract their names
+            for (int i = 0; i < files.length; i++) {
+                fileNames[i] = files[i].getName();
             }
+
+            // populate a GUI list with the file names
+            jList1.setListData(fileNames);
         } else {
-            jList1.setListData(new String[]{"Saved games directory not found"});
+            // if no files were found, display a message in the GUI list
+            jList1.setListData(new String[]{"No saved games found"});
         }
+    } else {
+        // if the directory doesn't exist, display an error message in the GUI list
+        jList1.setListData(new String[]{"Saved games directory not found"});
+    }
+
     }//GEN-LAST:event_btnRefreshActionPerformed
 
 
